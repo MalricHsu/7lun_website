@@ -2,6 +2,7 @@
 title: Vue 筆記前言
 sidebar_position: 1
 tags: [Vue]
+date: 2026-06-10
 ---
 
 :::info 筆記狀態

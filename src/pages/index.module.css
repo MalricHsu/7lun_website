@@ -20,7 +20,8 @@
 
 /* --- 關於我 --- */
 .aboutSection {
-  margin-bottom: 120px;
+  margin-bottom: 140px;
+  padding-top: 1rem;
 }
 
 .aboutContent {
@@ -34,26 +35,44 @@
   flex: 1;
 }
 
+.aboutKicker {
+  display: inline-block;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a88b75;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.2);
+}
+
 .greeting {
-  font-size: 3rem;
+  font-size: 3.4rem;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
   color: #6f4e37;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
 .subGreeting {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #a88b75;
   font-weight: 600;
-  margin-bottom: 2rem;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  margin-bottom: 2.25rem;
 }
 
 .description {
   font-size: 1.1rem;
-  line-height: 1.5;
-  color: #4a4a4a;
+  line-height: 1.8;
+  color: #5d4037;
+  max-width: 560px;
   margin-bottom: 2rem;
   text-align: left;
 }
@@ -64,32 +83,65 @@
   gap: 15px;
 }
 
-.navBtn {
-  background-color: #6f4e37;
-  color: #ffffff !important;
-  padding: 0.9rem 2rem;
-  border-radius: 50px;
-  font-weight: bold;
-  text-decoration: none;
+.editorialBtn {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #6f4e37 !important;
+  background: transparent;
+  border: 1px solid rgba(111, 78, 55, 0.4);
+  border-radius: 2px;
+  padding: 0.65rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  text-decoration: none !important;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   display: inline-block;
 }
 
-.navBtn:hover {
-  transform: translateY(-3px);
-  opacity: 0.9;
-  text-decoration: none;
+.editorialBtn:hover {
+  background: #6f4e37;
+  color: #fff !important;
+  border-color: #6f4e37;
 }
 
-/* 圓形大頭貼修復 */
+.editorialBtnPrimary {
+  background: #6f4e37;
+  color: #fff !important;
+  border-color: #6f4e37;
+}
+
+.editorialBtnPrimary:hover {
+  background: #5d4037;
+  border-color: #5d4037;
+}
+
+/* 報紙框照 + 圖說 */
+.avatarWrapper {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 .avatarImage {
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
+  width: 340px;
+  height: 340px;
+  border-radius: 2px;
   object-fit: cover;
-  border: 1x solid #e1cbad;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  background: #fdfbf7;
+  border: 1px solid rgba(111, 78, 55, 0.25);
+  box-shadow: 0 16px 44px rgba(111, 78, 55, 0.15);
+}
+
+.avatarCaption {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #a88b75;
 }
 
 /* --- 技能區 --- */
@@ -97,8 +149,13 @@
   margin-bottom: 120px;
 }
 
+/* --- 作品區節奏對齊 --- */
+.portfolioSection {
+  margin-bottom: 120px;
+}
+
 .skillCategory {
-  margin-bottom: 4rem;
+  margin-bottom: 2.25rem;
 }
 
 .skillCategory:last-child {
@@ -106,37 +163,35 @@
 }
 
 .categoryTitle {
-  font-size: 2rem;
+  font-size: 1.35rem;
   color: #6f4e37;
   font-weight: 700;
-  margin-bottom: 2rem;
-  border-bottom: 2px solid rgba(111, 78, 55, 0.1);
-  padding-bottom: 0.5rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.12);
+  padding-bottom: 0.4rem;
   display: flex;
   align-items: baseline;
   gap: 1rem;
 }
 
 .categoryTitle span {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #a88b75;
   font-weight: 500;
 }
 
 .skillFlexContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .skillCard {
-  flex: 1 1 calc(33.333% - 25px);
-  min-width: 300px;
+  min-width: 0;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
+  padding: 1.4rem 1.3rem;
+  border-radius: 14px;
   text-align: left;
   box-shadow: 0 8px 32px rgba(111, 78, 55, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -146,20 +201,8 @@
   flex-direction: column;
 }
 
-.baseCard {
-  flex: 1 1 calc(33.333% - 25px);
-}
-
-.frameworkCard {
-  flex: 1 1 calc(50% - 25px);
-}
-
-.frameworkRow {
-  margin-top: 25px;
-}
-
 .skillCard:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-6px);
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 15px 45px rgba(111, 78, 55, 0.1);
   border-color: #e1cbad;
@@ -167,14 +210,18 @@
 
 .skillName {
   color: #5d4037;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
 .skillDesc {
   color: #795548;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* --- 作品區 (Flexbox 1x2) --- */
@@ -333,16 +380,19 @@
     gap: 3rem;
   }
 
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .actionButtons {
     display: flex;
     justify-content: center;
     margin: 0 auto;
   }
 
-  .skillCard,
-  .baseCard,
-  .frameworkCard {
-    flex: 0 1 calc(50% - 20px);
+  .skillFlexContainer {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* 平板每行兩個 */
@@ -367,10 +417,8 @@
     margin: 0 auto;
   }
 
-  .skillCard,
-  .baseCard,
-  .frameworkCard {
-    flex: 1 1 100%;
+  .skillFlexContainer {
+    grid-template-columns: 1fr;
   }
 
   /* 手機技能滿版 */
@@ -469,6 +517,12 @@
   flex: 1;
 }
 
+/* 列表列裡的 tag 間距收斂（.tag 原帶 2rem 下距，在這裡太高） */
+.directoryNoteInfo .tagGroup {
+  margin-bottom: 0;
+  margin-top: 0.6rem;
+}
+
 .directoryNoteTitle {
   font-size: 1.25rem;
   color: #5d4037;
@@ -535,5 +589,385 @@
 
   .directoryNoteDate {
     margin-left: 0;
+  }
+}
+
+/* ===================================================== */
+/* === 暖色編輯／報紙風 (Masthead / Kicker / 索引 / 目錄) === */
+/* ===================================================== */
+
+/* --- 區塊標頭：欄目小標 + 襯線標題 + 細線 --- */
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 0.9rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.2);
+}
+
+.sectionHeaderCenter {
+  align-items: center;
+  text-align: center;
+}
+
+.kicker {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a88b75;
+}
+
+.editorialTitle {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #644632;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* --- 技能索引清單 --- */
+.skillIndex {
+  margin: 0;
+}
+
+.skillIndexRow {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.skillIndexRow:first-child {
+  border-top: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.skillIndexLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+}
+
+.skillIndexLabelZh {
+  font-family: "Noto Serif TC", serif !important;
+  font-size: 1.2rem;
+  color: #6f4e37;
+}
+
+.skillIndexLabelEn {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #a88b75;
+}
+
+.skillIndexNames {
+  margin: 0;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #5d4037;
+}
+
+/* --- 編輯風專案卡 (首頁專用，勿與 portfolio 共用類別衝突) --- */
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  background: #fdfbf7;
+  border: 1px solid rgba(111, 78, 55, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(111, 78, 55, 0.1);
+}
+
+.featureImageWrap {
+  height: 240px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.featureImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+
+.featureCard:hover .featureImg {
+  transform: scale(1.04);
+}
+
+.featureBody {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.featureCategory {
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c07d58;
+  margin-bottom: 0.5rem;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  color: #5d4037;
+  margin: 0 0 0.8rem;
+}
+
+.featureDesc {
+  color: #795548;
+  line-height: 1.8;
+  font-size: 0.98rem;
+  margin: 0 0 1.4rem;
+}
+
+.featureTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.featureTag {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 0.72rem;
+  color: #916648;
+  border: 1px solid rgba(111, 78, 55, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+.featureLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.featureLink {
+  color: #6f4e37 !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none !important;
+  transition: color 0.3s ease;
+}
+
+.featureLink:hover {
+  color: #a88b75 !important;
+  text-decoration: underline !important;
+}
+
+.featureSep {
+  color: rgba(111, 78, 55, 0.3);
+}
+
+/* --- 查看全部 / 作品集連結 --- */
+.seeAllRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 3px double rgba(111, 78, 55, 0.3);
+}
+
+.seeAllLink {
+  font-family: "Noto Sans TC", sans-serif !important;
+  color: #6f4e37 !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.seeAllLink:hover {
+  color: #5d4037 !important;
+  transform: translateX(4px);
+}
+
+/* --- 最新文章：編號目錄 --- */
+.contentsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.contentsHeader .sectionHeader {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.contentsList {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+
+.contentsItem {
+  border-bottom: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.contentsItem:first-child {
+  border-top: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.contentsRow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.4rem 0.2rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background 0.25s ease, padding-left 0.25s ease;
+}
+
+.contentsRow:hover {
+  background: rgba(111, 78, 55, 0.04);
+  padding-left: 0.8rem;
+}
+
+.contentsNum {
+  font-family: "Noto Serif TC", serif !important;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #e1cbad;
+  line-height: 1;
+  min-width: 2.5rem;
+}
+
+.contentsMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contentsTitle {
+  font-size: 1.2rem;
+  color: #5d4037;
+  margin: 0;
+}
+
+.contentsTags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.contentsTag {
+  font-size: 0.7rem;
+  color: #916648;
+  border: 1px solid rgba(111, 78, 55, 0.2);
+  padding: 0.15rem 0.55rem;
+  border-radius: 2px;
+}
+
+.contentsDate {
+  font-family: "Noto Sans TC", sans-serif !important;
+  font-size: 0.85rem;
+  color: #a88b75;
+  white-space: nowrap;
+}
+
+.contentsEmpty {
+  color: #a88b75;
+  padding: 2rem 0;
+}
+
+/* --- 編輯風 RWD --- */
+@media (max-width: 992px) {
+  .skillIndexRow {
+    grid-template-columns: 140px 1fr;
+    gap: 1.2rem;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .contentsRow {
+    grid-template-columns: auto 1fr;
+    row-gap: 0.3rem;
+  }
+
+  .contentsDate {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .editorialTitle {
+    font-size: 1.8rem;
+  }
+
+  .skillIndexRow {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .skillIndexLabel {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  .skillIndexNames {
+    font-size: 0.98rem;
+  }
+
+  .featureBody {
+    padding: 1.4rem;
+  }
+
+  .featureImageWrap {
+    height: 200px;
+  }
+
+  .featureLinks {
+    flex-wrap: wrap;
+  }
+
+  .seeAllRow {
+    justify-content: center;
+  }
+
+  .contentsNum {
+    font-size: 1.3rem;
+    min-width: 2rem;
   }
 }

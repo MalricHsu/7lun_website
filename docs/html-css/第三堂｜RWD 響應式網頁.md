@@ -1,7 +1,8 @@
 ---
-title: 第三堂 RWD 響應式網頁
-sidebar_position: 12
+title: 第三堂｜RWD 響應式網頁
+sidebar_position: 11
 tags: [CSS, HTML, 課程筆記]
+date: 2025-07-11
 ---
 
 - [課程講義](https://hackmd.io/FW2VFU2fR_KfWRPeIXKSkQ)
@@ -11,9 +12,8 @@ tags: [CSS, HTML, 課程筆記]
 
 - viewport 設定
 
-  ```
+  ```html
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   ```
 
 - CSS media Queries 語法
@@ -37,9 +37,9 @@ tags: [CSS, HTML, 課程筆記]
 
 ### 三、寬度與單位配置
 
-- max-width：運用在 圖片與 HTML 標籤上（如 Container）
-- 利用 % 來定義寬度
-- box-sizing
+- `max-width`：運用在圖片與 HTML 標籤上（如 Container）
+- 利用 `%` 來定義寬度
+- `box-sizing`
 
   ```css
   img {
@@ -66,25 +66,26 @@ tags: [CSS, HTML, 課程筆記]
   </picture>
   ```
 
-### 四、斷點規劃+大網站設計範例
+### 四、斷點規劃 + 大網站設計範例
 
 - 常見斷點設計：[Bootstrap-layout-containers](https://getbootstrap.com/docs/5.3/layout/containers/)
   - Ｑ：為什麼沒有設計更小的斷點呢？
-  - Ａ：因為手機型號太多，更小的情況下通常都是直接用單欄呈現，然後再針對 “特定族群” 另外定義（如果必要）
-- 特定族群：
-  - iPhone 15, 16 Pro Max - **440px (視專案族群)**
-    | 裝置 | Viewport 寬度（CSS px） |
-    | ----------------- | ----------------------- |
-    | iPhone 15 | **393px** |
-    | iPhone 15 Plus | **430px** |
-    | iPhone 15 Pro | **393px** |
-    | iPhone 15 Pro Max | **430px** |
-    | iPhone 16 | **393px** |
-    | iPhone 16 Pro | **402px** |
-    | iPhone 16 Pro Max | **440px** |
+  - Ａ：因為手機型號太多，更小的情況下通常都是直接用單欄呈現，然後再針對「特定族群」另外定義（如果必要）
+- 特定族群：iPhone 15, 16 Pro Max - **440px（視專案族群）**
+
+  | 裝置              | Viewport 寬度（CSS px） |
+  | ----------------- | ----------------------- |
+  | iPhone 15         | **393px**               |
+  | iPhone 15 Plus    | **430px**               |
+  | iPhone 15 Pro     | **393px**               |
+  | iPhone 15 Pro Max | **430px**               |
+  | iPhone 16         | **393px**               |
+  | iPhone 16 Pro     | **402px**               |
+  | iPhone 16 Pro Max | **440px**               |
+
 - 如果是 PC 做到手機的話，語法就會有點像是這樣：
 
-  ```
+  ```css
   * {
     box-sizing: border-box;
   }
@@ -100,7 +101,7 @@ tags: [CSS, HTML, 課程筆記]
     padding-left: 20px;
     padding-right: 20px;
   }
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     .header {
       height: auto;
     }
@@ -108,10 +109,9 @@ tags: [CSS, HTML, 課程筆記]
       width: 50%;
     }
   }
-  @media(max-width: 576px){
+  @media (max-width: 576px) {
     .column-3 {
       width: 100%;
     }
   }
-
   ```

@@ -1,0 +1,37 @@
+/* 報紙刊頭：日期(左) / 標題(置中,由 navbar 提供) / No.7(右) 同一列 */
+.ribbonDate,
+.ribbonIssue {
+  position: absolute;
+  top: 2.15rem;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #a88b75;
+  white-space: nowrap;
+  z-index: 5;
+  pointer-events: none;
+  transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+.ribbonDate {
+  left: 2.5rem;
+}
+
+.ribbonIssue {
+  right: 2.5rem;
+}
+
+/* 滾動縮減時，跟著上移對齊縮小後的標題 */
+:global(.navbar--shrunk) .ribbonDate,
+:global(.navbar--shrunk) .ribbonIssue {
+  top: 1.05rem;
+}
+
+/* 手機版 navbar 改為單列(品牌+漢堡)，空間不足 → 隱藏避免重疊 */
+@media (max-width: 992px) {
+  .ribbonDate,
+  .ribbonIssue {
+    display: none;
+  }
+}

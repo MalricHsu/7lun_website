@@ -56,6 +56,8 @@ const config = {
     ],
   ],
 
+  plugins: [["./plugins/recent-docs", { docsDir: "docs", limit: 3 }]],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -98,6 +100,9 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} 7lun 的程式手冊.`,
+      },
+      prism: {
+        theme: prismThemes.github,
       },
     }),
 };

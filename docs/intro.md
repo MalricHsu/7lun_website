@@ -3,14 +3,15 @@ sidebar_position: 1
 slug: /intro
 title: 語法手冊
 hide_title: true
+date: 2026-05-23
 ---
 
 <div style={{ padding: '2rem 0', borderBottom: '1px solid var(--ifm-color-emphasis-200)', marginBottom: '2rem' }}>
   <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--ifm-color-primary)', marginBottom: '1rem' }}>語法手冊</h1>
-  <p style={{ fontSize: '1.1rem', color: 'var(--ifm-color-emphasis-700)', maxWidth: '800px', lineHeight: '1.6' }}>
+  <div style={{ fontSize: '1.1rem', color: 'var(--ifm-color-emphasis-700)', maxWidth: '800px', lineHeight: '1.6' }}>
     這裡記錄了我在前端開發過程中的技術積累與實戰心得。<br />
     從基礎語法到框架應用，將那些踩過的坑與解法，淬鍊成隨時可查閱的知識庫。
-  </p>
+  </div>
 </div>
 
 <style>
@@ -40,7 +41,7 @@ hide_title: true
 
 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
   <li>
-    <a href="/7lun-workspace/docs/category/html--css" className="intro-card">
+    <a href="/docs/category/html--css" className="intro-card">
       <div style={{ fontSize: '1.75rem', color: 'var(--ifm-color-primary)', lineHeight: '1' }}>
         <i className="bi bi-filetype-html"></i>
       </div>
@@ -52,7 +53,7 @@ hide_title: true
   </li>
 
   <li>
-    <a href="/7lun-workspace/docs/category/javascript" className="intro-card">
+    <a href="/docs/category/javascript" className="intro-card">
       <div style={{ fontSize: '1.75rem', color: 'var(--ifm-color-primary)', lineHeight: '1' }}>
         <i className="bi bi-filetype-js"></i>
       </div>
@@ -64,7 +65,7 @@ hide_title: true
   </li>
 
   <li>
-    <a href="/7lun-workspace/docs/category/react" className="intro-card">
+    <a href="/docs/category/react" className="intro-card">
       <div style={{ fontSize: '1.75rem', color: 'var(--ifm-color-primary)', lineHeight: '1' }}>
         <i className="bi bi-filetype-jsx"></i>
       </div>
@@ -76,7 +77,7 @@ hide_title: true
   </li>
 
   <li>
-    <a href="/7lun-workspace/docs/category/vue" className="intro-card">
+    <a href="/docs/category/vuejs" className="intro-card">
       <div style={{ fontSize: '1.75rem', color: 'var(--ifm-color-primary)', lineHeight: '1' }}>
         <i className="bi bi-layers"></i>
       </div>
@@ -88,7 +89,7 @@ hide_title: true
   </li>
 
   <li>
-    <a href="/7lun-workspace/docs/category/nodejs" className="intro-card">
+    <a href="/docs/category/nodejs" className="intro-card">
       <div style={{ fontSize: '1.75rem', color: 'var(--ifm-color-primary)', lineHeight: '1' }}>
         <i className="bi bi-server"></i>
       </div>
@@ -100,7 +101,7 @@ hide_title: true
   </li>
 
   <li>
-    <a href="/7lun-workspace/docs/category/git" className="intro-card">
+    <a href="/docs/category/git" className="intro-card">
       <div style={{ fontSize: '1.75rem', color: 'var(--ifm-color-primary)', lineHeight: '1' }}>
         <i className="bi bi-git"></i>
       </div>

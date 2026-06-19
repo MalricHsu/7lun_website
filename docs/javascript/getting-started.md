@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: 開始學習 JavaScript
+date: 2026-05-23
 ---
 
 # JavaScript 筆記

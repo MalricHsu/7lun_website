@@ -1,7 +1,8 @@
 ---
-title: 第一堂 1 px 也不差的版型控制術
-sidebar_position: 10
+title: 第一堂｜1 px 也不差的版型控制術
+sidebar_position: 9
 tags: [CSS, HTML, 課程筆記]
+date: 2025-07-02
 ---
 
 - [課程講義](https://hackmd.io/uEK09rOdQFq5TlBFKOAFBg)
@@ -54,20 +55,20 @@ tags: [CSS, HTML, 課程筆記]
 
 ### 四、切版變成神速的區塊與行內元素概念
 
-- display: block、inline 概念複習
-  - 問題哪些元素是 行內元素
-    1. div
-    2. **span**
-    3. **i**
-    4. p
-    5. ul
-    6. li
-    7. **a**
-- 行距設定：line-height 的高度影響
+- `display: block`、`inline` 概念複習
+  - 問題：哪些元素是行內元素？
+    - div
+    - **span** ✅
+    - **i** ✅
+    - p
+    - ul
+    - li
+    - **a** ✅
+- 行距設定：`line-height` 的高度影響
   - 全局設定技巧：
-    - 一般為1.5 行高
-    - 標題可以是 1.2 行高（常見
-- margin、padding
+    - 一般為 1.5 行高
+    - 標題可以是 1.2 行高
+- `margin`、`padding`
 - 圖片距離分享
   - 向下會多 3px
   - `img { vertical-align: middle }`
@@ -82,5 +83,5 @@ tags: [CSS, HTML, 課程筆記]
 ### 六、常見問題
 
 - class 名稱順序，共用的 class 性質放自訂的 class 名稱後面，例如：`<div class="profile container">`
-- **避免以寫死容器高**
+- **避免寫死容器高度**
 - 圖片可以設定 `display: block;`

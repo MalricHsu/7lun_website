@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: 開始學習 Git
+date: 2026-05-23
 ---
 
 # Git 筆記

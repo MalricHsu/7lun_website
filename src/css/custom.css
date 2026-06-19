@@ -110,6 +110,7 @@ h5,
 h6 {
   font-family: "Noto Serif TC", serif !important;
   color: #644632 !important;
+  line-height: 1.2 !important;
   transition: color 0.3s ease;
 }
 
@@ -119,6 +120,17 @@ li,
 span,
 .menu__link {
   font-family: "Noto Sans TC", sans-serif !important;
+  line-height: 1.5 !important;
+}
+
+/* 文件內容區域行距 */
+.markdown p,
+.markdown li,
+.markdown ul,
+.markdown ol,
+.markdown ul li,
+.markdown ol li {
+  line-height: 1.8 !important;
 }
 
 .header-github-link {
@@ -306,4 +318,187 @@ span,
   .footer__copyright {
     line-height: 1.8 !important; /* 讓多行版權文字稍微拉開，比較好讀 */
   }
+}
+
+/* ===================================================== */
+/* === 語法手冊（docs）編輯風排版 === */
+/* ===================================================== */
+
+:root {
+  /* 暖色內文 / 程式碼 / 表格變數 */
+  --ifm-code-background: #f3ecdf;
+  --ifm-table-border-color: rgba(111, 78, 55, 0.15);
+  --ifm-table-stripe-background: rgba(111, 78, 55, 0.03);
+  --ifm-table-head-background: #f5f0e6;
+  /* 側邊欄稍微收窄，給中間閱讀欄更多空間 */
+  --doc-sidebar-width: 270px;
+}
+
+/* --- 中間閱讀欄：加寬留白 + 呼吸感 --- */
+[class*="docItemCol"] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.theme-doc-markdown {
+  line-height: 1.85;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.theme-doc-markdown p,
+.theme-doc-markdown li {
+  font-size: 1.02rem;
+}
+
+.theme-doc-markdown li {
+  margin: 0.4rem 0;
+}
+
+/* --- 文章主標 + 建立日期 dateline --- */
+.theme-doc-markdown > header h1 {
+  font-size: 2.6rem;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.doc-created-date {
+  font-family: "Noto Sans TC", sans-serif !important;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #a88b75;
+  padding-bottom: 1.1rem;
+  margin-bottom: 2.2rem;
+  border-bottom: 3px double rgba(111, 78, 55, 0.25);
+}
+
+/* --- 標題層級：欄目式細線分隔 --- */
+.theme-doc-markdown h2 {
+  margin-top: 2.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.15);
+}
+
+.theme-doc-markdown h3 {
+  margin-top: 2rem;
+}
+
+/* --- 表格 --- */
+.theme-doc-markdown table {
+  display: table;
+  width: 100%;
+}
+
+.theme-doc-markdown table thead tr {
+  background-color: var(--ifm-table-head-background);
+  border-bottom: 2px solid rgba(111, 78, 55, 0.2);
+}
+
+.theme-doc-markdown table th,
+.theme-doc-markdown table td {
+  border: 1px solid var(--ifm-table-border-color);
+}
+
+/* --- 程式碼區塊：暖色亮底（取代預設深色）--- */
+[class*="codeBlockContainer"] {
+  border: 1px solid rgba(111, 78, 55, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(111, 78, 55, 0.05);
+}
+
+[class*="codeBlockContainer"] pre,
+.prism-code {
+  background-color: #fbf7f0 !important;
+}
+
+[class*="codeBlockTitle"] {
+  background-color: #f5f0e6 !important;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.15) !important;
+  color: #6f4e37 !important;
+}
+
+/* 行內 code */
+.theme-doc-markdown code {
+  color: #6f4e37;
+  border: 1px solid rgba(111, 78, 55, 0.12);
+  border-radius: 4px;
+}
+
+/* --- 提示框 admonition：info/note 暖化（warning/danger 保留語意色）--- */
+.theme-admonition {
+  border-radius: 4px;
+  border-left-width: 4px;
+}
+
+.alert--info,
+.alert--secondary {
+  --ifm-alert-background-color: #f6f1e8;
+  --ifm-alert-background-color-highlight: rgba(111, 78, 55, 0.08);
+  --ifm-alert-foreground-color: #5d4037;
+  --ifm-alert-border-color: #c9b59a;
+}
+
+/* --- 左側分類導覽：字縮小、間距收緊、暖色 active / hover --- */
+.menu__link,
+.menu__caret {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  padding-top: 0.32rem;
+  padding-bottom: 0.32rem;
+}
+
+.menu__list-item:not(:first-child) {
+  margin-top: 0.15rem;
+}
+
+.menu__link {
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu__link:hover {
+  background-color: rgba(111, 78, 55, 0.05);
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: rgba(111, 78, 55, 0.09);
+  color: #6f4e37 !important;
+  font-weight: 600;
+}
+
+/* --- 右側目錄 TOC：字縮小、收緊 --- */
+.table-of-contents {
+  border-left: 1px solid rgba(111, 78, 55, 0.15);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.table-of-contents__link {
+  padding: 0.12rem 0;
+  display: block;
+}
+
+.table-of-contents ul li {
+  margin: 0.1rem 0;
+}
+
+.table-of-contents__link:hover {
+  color: #6f4e37;
+}
+
+.table-of-contents__link--active {
+  color: #6f4e37 !important;
+  font-weight: 600;
+}
+
+/* --- 麵包屑 breadcrumb 暖色 --- */
+.breadcrumbs__link {
+  color: #916648;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background-color: rgba(111, 78, 55, 0.08);
+  color: #6f4e37;
 }
