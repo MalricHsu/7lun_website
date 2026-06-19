@@ -1,0 +1,231 @@
+.timelineContainer {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* 中間的線 */
+.timelineContainer::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #e0d5c1; /* 柔和的奶茶色線條 */
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px; /* 居中校正 */
+  border-radius: 2px;
+}
+
+/* 每個項目佔據一半的寬度 */
+.timelineItem {
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+/* 放在左邊的項目 */
+.leftItem {
+  left: 0;
+  padding: 10px 45px 10px 15px;
+}
+
+/* 放在右邊的項目 */
+.rightItem {
+  left: 50%;
+  padding: 10px 15px 10px 45px;
+}
+
+/* 時間軸上的圓點 */
+.timelineDot {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #6f4e37; /* 深奶茶色點點 */
+  border: 4px solid #fdfbf7; /* 跟背景同色，製造空隙感 */
+  border-radius: 50%;
+  top: 25px; /* 對齊內容框 */
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+/* 根據左右位置調整圓點的位置 */
+.leftItem .timelineDot {
+  right: -12px; /* 貼在右側線上 */
+}
+.rightItem .timelineDot {
+  left: -12px; /* 貼在左側線上 */
+}
+
+/* 滑鼠經過圓點放大 */
+.timelineItem:hover .timelineDot {
+  transform: scale(1.3);
+}
+
+/* 卡片內容 */
+.timelineContent {
+  padding: 25px 35px;
+  background-color: white;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(111, 78, 55, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* 設定為 pointer */
+}
+
+/* 製作指向線條的小箭頭 */
+.timelineContent::after {
+  content: " ";
+  position: absolute;
+  top: 27px;
+  border: medium solid white;
+}
+
+/* 左側卡片的箭頭向右 */
+.leftItem .timelineContent::after {
+  right: -10px;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* 右側卡片的箭頭向左 */
+.rightItem .timelineContent::after {
+  left: -10px;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* 卡片滑鼠經過的效果（左邊往左浮，右邊往右浮） */
+.leftItem .timelineContent:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 8px 25px rgba(111, 78, 55, 0.15);
+}
+
+.rightItem .timelineContent:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(111, 78, 55, 0.15);
+}
+
+/* 標題與文字 */
+.timelineTitle {
+  color: #6f4e37;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.timelineText {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.timelineText:last-child {
+  margin-bottom: 0;
+}
+
+/* 頭部介紹區塊 */
+.introSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+  padding-top: 2rem;
+}
+
+.introAvatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #e0d5c1;
+  box-shadow: 0 4px 15px rgba(111, 78, 55, 0.1);
+  flex-shrink: 0; /* 避免照片被壓縮 */
+}
+
+.introContent {
+  text-align: left;
+}
+
+.introTitle {
+  color: #6f4e37;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.introText {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* 響應式設定：平板版微調間距，維持左右交錯 */
+@media (max-width: 992px) {
+  .leftItem {
+    padding: 10px 25px 10px 0px;
+  }
+  .rightItem {
+    padding: 10px 0px 10px 25px;
+  }
+  .timelineContent {
+    padding: 20px 25px;
+  }
+}
+
+/* 響應式設定：手機版改回單邊直線（否則太擠） */
+@media (max-width: 768px) {
+  .introSection {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .timelineContainer::after {
+    left: 31px; /* 線條移到左邊 */
+  }
+  .timelineItem {
+    width: 100%;
+  }
+  .leftItem, 
+  .rightItem {
+    left: 0; /* 項目通通靠左 */
+    padding: 10px 15px 10px 70px;
+  }
+  .leftItem .timelineDot, 
+  .rightItem .timelineDot {
+    left: 19px; /* 點點移到左邊 */
+    right: auto;
+  }
+  /* 手機版箭頭統一向左 */
+  .leftItem .timelineContent::after, 
+  .rightItem .timelineContent::after {
+    left: -10px;
+    right: auto;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+  /* 手機版動畫統一往上浮動 */
+  .leftItem .timelineContent:hover,
+  .rightItem .timelineContent:hover {
+    transform: translateY(-3px);
+  }
+
+  .introTitle {
+    font-size: 1.8rem;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .introContent, .introText {
+    text-align: center;
+  }
+}

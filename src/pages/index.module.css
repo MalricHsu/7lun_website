@@ -1,0 +1,539 @@
+/* --- 基礎設定與修復跑版 --- */
+.mainContainer * {
+  box-sizing: border-box;
+  /* 確保 padding 不會撐破盒子 */
+}
+
+.mainContainer {
+  padding: 100px 0;
+  background-color: #fdfaf5;
+  /* 輕奶茶色底 */
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+  color: #6f4e37;
+  font-weight: bold;
+}
+
+/* --- 關於我 --- */
+.aboutSection {
+  margin-bottom: 120px;
+}
+
+.aboutContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.aboutText {
+  flex: 1;
+}
+
+.greeting {
+  font-size: 3rem;
+  color: #6f4e37;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.subGreeting {
+  font-size: 1.5rem;
+  color: #a88b75;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #4a4a4a;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.navBtn {
+  background-color: #6f4e37;
+  color: #ffffff !important;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.navBtn:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+/* 圓形大頭貼修復 */
+.avatarImage {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1x solid #e1cbad;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 技能區 --- */
+.skillsSection {
+  margin-bottom: 120px;
+}
+
+.skillCategory {
+  margin-bottom: 4rem;
+}
+
+.skillCategory:last-child {
+  margin-bottom: 0;
+}
+
+.categoryTitle {
+  font-size: 2rem;
+  color: #6f4e37;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid rgba(111, 78, 55, 0.1);
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.categoryTitle span {
+  font-size: 1.1rem;
+  color: #a88b75;
+  font-weight: 500;
+}
+
+.skillFlexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: flex-start;
+}
+
+.skillCard {
+  flex: 1 1 calc(33.333% - 25px);
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  text-align: left;
+  box-shadow: 0 8px 32px rgba(111, 78, 55, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.baseCard {
+  flex: 1 1 calc(33.333% - 25px);
+}
+
+.frameworkCard {
+  flex: 1 1 calc(50% - 25px);
+}
+
+.frameworkRow {
+  margin-top: 25px;
+}
+
+.skillCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 15px 45px rgba(111, 78, 55, 0.1);
+  border-color: #e1cbad;
+}
+
+.skillName {
+  color: #5d4037;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.skillDesc {
+  color: #795548;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --- 作品區 (Flexbox 1x2) --- */
+.projectFlexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.projectItemCard {
+  flex: 0 1 calc(50% - 15px);
+  /* 桌面端每行兩個 */
+  min-width: 500px;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  text-decoration: none !important;
+  color: inherit !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectItemCard:hover {
+  transform: translateY(-12px);
+  cursor: pointer;
+}
+
+.projectImageWrapper {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.projectImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.6s;
+}
+
+.projectItemCard:hover .projectImg {
+  transform: scale(1.05);
+}
+
+.projectContent {
+  padding: 2.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCategory {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #c07d58;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.projectTitle {
+  font-size: 1.7rem;
+  color: #5d4037;
+  margin-bottom: 1rem;
+}
+
+.projectDesc {
+  color: #795548;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.tagGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.tag {
+  background: #eee0d0;
+  color: #6f4e37;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.projectFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(111, 78, 55, 0.1);
+}
+
+.projectLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.textLink {
+  color: #6f4e37 !important;
+  font-weight: 600;
+  text-decoration: underline !important;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.textLink:hover {
+  color: #a88b75 !important;
+}
+
+.separator {
+  color: rgba(111, 78, 55, 0.3);
+  font-size: 0.9rem;
+}
+
+.readMoreLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none !important;
+  color: #6f4e37 !important;
+  transition: all 0.3s ease;
+}
+
+.readMoreHint {
+  font-size: 0.8rem;
+  color: inherit;
+  font-weight: 500;
+}
+
+.readMoreArrow {
+  font-size: 1.15rem;
+  color: inherit;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+}
+
+.readMoreLink:hover {
+  color: #a88b75 !important;
+  transform: translate(4px, -4px);
+}
+
+/* --- RWD 手機版適配 --- */
+@media (max-width: 992px) {
+  .aboutContent {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .actionButtons {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .skillCard,
+  .baseCard,
+  .frameworkCard {
+    flex: 0 1 calc(50% - 20px);
+  }
+
+  /* 平板每行兩個 */
+  .projectItemCard {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  /* 手機作品滿版 */
+  .avatarImage {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  .actionButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .skillCard,
+  .baseCard,
+  .frameworkCard {
+    flex: 1 1 100%;
+  }
+
+  /* 手機技能滿版 */
+  .greeting {
+    font-size: 2.5rem;
+  }
+}
+
+/* === 目錄總覽頁面 === */
+
+.directorySection {
+  margin-bottom: 5rem;
+}
+
+.directorySectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid rgba(111, 78, 55, 0.1);
+}
+
+.directorySectionLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.directorySectionIcon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.directorySectionTitle {
+  font-size: 1.8rem;
+  color: #6f4e37 !important;
+  margin: 0 0 0.25rem 0;
+  font-weight: 700;
+}
+
+.directorySectionSubtitle {
+  font-size: 0.95rem;
+  color: #a88b75;
+  margin: 0;
+}
+
+.directorySeeAll {
+  font-family: "Noto Sans TC", sans-serif !important;
+  color: #6f4e37 !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.directorySeeAll:hover {
+  background: rgba(111, 78, 55, 0.06);
+  color: #5d4037 !important;
+  transform: translateX(4px);
+}
+
+/* --- 筆記列表卡片 --- */
+.directoryNoteList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.directoryNoteCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.8rem 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 20px rgba(111, 78, 55, 0.04);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.directoryNoteCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 35px rgba(111, 78, 55, 0.1);
+  border-color: #e1cbad;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.directoryNoteInfo {
+  flex: 1;
+}
+
+.directoryNoteTitle {
+  font-size: 1.25rem;
+  color: #5d4037;
+  margin: 0 0 0.5rem 0;
+}
+
+.directoryNoteDesc {
+  color: #795548;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 0.8rem 0;
+}
+
+.directoryNoteDate {
+  font-family: "Noto Sans TC", sans-serif !important;
+  color: #a88b75;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  margin-left: 2rem;
+  padding-top: 0.3rem;
+}
+
+/* --- 空狀態 --- */
+.directoryEmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 2px dashed rgba(111, 78, 55, 0.15);
+}
+
+.directoryEmptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.directoryEmptyText {
+  font-size: 1.1rem;
+  color: #a88b75;
+  margin: 0;
+}
+
+/* --- 目錄頁 RWD --- */
+@media (max-width: 768px) {
+  .directorySectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .directorySeeAll {
+    padding-left: 0;
+  }
+
+  .directoryNoteCard {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .directoryNoteDate {
+    margin-left: 0;
+  }
+}

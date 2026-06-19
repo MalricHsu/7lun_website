@@ -1,0 +1,309 @@
+/* --- 基礎設定與字體維持不變 --- */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap");
+
+:root {
+  --ifm-color-primary: #6f4e37;
+  --ifm-background-color: #fdfbf7;
+  --ifm-navbar-background-color: #fdfbf7;
+  --ifm-navbar-shadow: 0 4px 12px rgba(111, 78, 55, 0.08);
+}
+
+/* 1. 預設狀態：咖啡色 (同時針對 a 標籤與內層文字) */
+a.navbar__brand,
+a.navbar__brand .navbar__title {
+  color: #644632 !important;
+  transition: color 0.3s ease !important;
+}
+
+/* 2. Hover 狀態：黑色 (強制蓋過 Docusaurus 的 CSS 變數) */
+a.navbar__brand:hover,
+a.navbar__brand:hover .navbar__title {
+  color: #000000 !important;
+}
+
+/* --- 導覽列雙層置中邏輯 (優化版) --- */
+@media (min-width: 993px) {
+  .navbar {
+    height: auto !important;
+    padding: 1.8rem 0 1.2rem 0 !important; /* 初始稍微加寬，滾動後更有感 */
+    /* 使用硬體加速並優化過渡曲線 */
+    transition:
+      padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.5s ease,
+      background-color 0.5s ease !important;
+    will-change: padding, box-shadow; /* 預告瀏覽器要變動的屬性 */
+  }
+
+  .navbar__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    backface-visibility: hidden; /* 防止文字抖動 */
+  }
+
+  .navbar__brand {
+    margin-right: 0 !important;
+    margin-bottom: 1.2rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .navbar__title {
+    font-family: "Noto Serif TC", serif !important;
+    font-size: 1.8rem;
+    color: #644632 !important;
+    transition: color 0.3s ease !important; /* 加上平滑漸變，讓顏色切換更自然 */
+  }
+
+  /* 當滑鼠移到整個 Logo/標題區塊時，文字變成黑色 */
+  .navbar__brand:hover .navbar__title {
+    color: #000000 !important;
+  }
+
+  .navbar__items--right {
+    display: flex !important;
+    justify-content: center !important;
+    margin-left: 0 !important;
+    width: 100%;
+    gap: 2.5rem; /* 增加一點間距更有呼吸感 */
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      max-height 0.4s ease !important;
+    max-height: 100px;
+    opacity: 1;
+    will-change: opacity, transform, max-height;
+  }
+
+  /* --- 滾動縮減狀態 (絲滑優化) --- */
+
+  .navbar--shrunk {
+    padding: 0.8rem 0 !important;
+    box-shadow: 0 2px 15px rgba(111, 78, 55, 0.12) !important;
+  }
+
+  .navbar--shrunk .navbar__brand {
+    margin-bottom: 0 !important;
+    transform: scale(0.85); /* 標題縮小時用 scale 會比改 font-size 更絲滑 */
+  }
+
+  .navbar--shrunk .navbar__items--right {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    transform: translateY(-10px); /* 向上滑動消失的效果 */
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none;
+    overflow: hidden;
+  }
+}
+
+/* --- 字體與 GitHub 維持 (加入動畫優化) --- */
+
+.navbar__item,
+.navbar__link,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Noto Serif TC", serif !important;
+  color: #644632 !important;
+  transition: color 0.3s ease;
+}
+
+body,
+p,
+li,
+span,
+.menu__link {
+  font-family: "Noto Sans TC", sans-serif !important;
+}
+
+.header-github-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px;
+}
+
+.header-github-link::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12' fill='%23644632'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+/* --- 移除 GitHub 旁邊的外部連結圖示 (框框箭頭) --- */
+.header-github-link svg:last-child {
+  display: none !important;
+}
+/* ========================================= */
+/* --- 手機版側邊選單 RWD (安全間距版) --- */
+/* ========================================= */
+@media (max-width: 992px) {
+  /* 1. 奶茶底色與頂部去除底線 */
+  .navbar-sidebar {
+    background-color: #f5f0e6 !important;
+  }
+  .navbar-sidebar__brand {
+    box-shadow: none !important;
+    border-bottom: none !important;
+  }
+  .navbar-sidebar__close {
+    color: #644632 !important;
+  }
+
+  /* 2. 讓整個選單清單水平置中，並往下推一點 */
+  .menu__list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding-top: 2rem !important; /* 距離頂部一點呼吸空間 */
+  }
+
+  /* 3. 清除預設 margin，讓外層成為置中容器 */
+  .menu__list-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 !important;
+  }
+
+  /* 4. 核心：單純加大上下 padding 來撐開空間 */
+  .menu__link {
+    font-size: 1rem;
+    color: #644632 !important;
+    background: transparent !important;
+    padding: 1.2rem 1rem !important;
+    justify-content: center !important; /* 確保 Docusaurus 預設的 Flex 連結文字置中 */
+    letter-spacing: 2px;
+  }
+}
+
+/* --- 奶茶色系 + 響應式排版 (電腦版左右、手機版置中堆疊) --- */
+
+/* 1. 頁尾整體背景與文字顏色 */
+.footer {
+  background-color: #f5f0e6 !important;
+  border-top: 1px solid rgba(111, 78, 55, 0.1) !important;
+  padding: 3rem 2rem 2rem !important;
+}
+
+/* 2. 電腦版：將 Footer 容器改為左右排版 */
+.footer .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* 左右撐開 */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* 3. 左側導覽列：取消預設寬度限制 */
+.footer__links {
+  margin-bottom: 0 !important;
+  width: auto !important;
+}
+
+.footer__col {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 4. 導覽列連結：橫向排列，並加入垂直線「|」 */
+.footer__items {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+
+.footer__item {
+  display: flex;
+  align-items: center;
+}
+
+/* 畫出分隔線，顏色設定為半透明的深棕色 */
+.footer__item:not(:last-child)::after {
+  content: "|";
+  color: rgba(111, 78, 55, 0.4);
+  margin: 0 16px; /* 電腦版間距 */
+  font-weight: 300;
+}
+
+/* 5. 連結文字樣式 */
+.footer__link-item {
+  font-family: "Noto Sans TC", sans-serif !important;
+  color: #6f4e37 !important;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.footer__link-item:hover {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+/* 6. 電腦版右側版權宣告：靠右對齊 */
+.footer__bottom {
+  margin: 0 !important;
+  text-align: right !important;
+}
+
+.footer__copyright {
+  color: #916648 !important;
+  font-size: 0.85rem;
+  margin: 0 !important;
+  opacity: 0.9;
+}
+
+/* ========================================= */
+/* 7. 手機版適配 (對齊你提供的手機版截圖) */
+/* ========================================= */
+@media (max-width: 576px) {
+  /* 容器改為直向排列、全部置中 */
+  .footer .container {
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 30px !important; /* 拉開上下區塊的距離 */
+  }
+
+  .footer__links {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* 強制連結保持一排，不換行 */
+  .footer__items {
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+  }
+
+  /* 縮小分隔線間距，讓四個連結擠得下 */
+  .footer__item:not(:last-child)::after {
+    margin: 0 8px !important;
+  }
+
+  /* 稍微縮小字體，確保一行放得下 */
+  .footer__link-item {
+    font-size: 0.82rem !important;
+  }
+
+  /* 版權宣告區塊置中 */
+  .footer__bottom {
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .footer__copyright {
+    line-height: 1.8 !important; /* 讓多行版權文字稍微拉開，比較好讀 */
+  }
+}

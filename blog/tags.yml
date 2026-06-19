@@ -1,0 +1,20 @@
+project:
+  label: 專案作品
+  permalink: /project
+  description: 從零到一的專案開發紀錄
+
+note:
+  label: 學習歷程
+  permalink: /note
+  description: 學習過程中的技術筆記與心得
+
+切版網站:
+  label: 切版網站
+  permalink: /layout
+  description: 前端靜態切版與 UI 實作
+
+react:
+  label: React
+  permalink: /react
+  description: React
+
