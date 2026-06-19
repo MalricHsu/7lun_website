@@ -16,9 +16,9 @@ const config = {
     v4: true,
   },
 
-  // GitHub Pages 設定
-  url: "https://MalricHsu.github.io",
-  baseUrl: "/7lun-workspace/",
+  // Vercel 部署設定
+  url: "https://7lun-website.vercel.app",
+  baseUrl: "/",
 
   organizationName: "MalricHsu",
   projectName: "7lun-workspace",
