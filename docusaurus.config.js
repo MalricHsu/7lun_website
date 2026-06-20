@@ -48,6 +48,7 @@ const config = {
         blog: {
           showReadingTime: true,
           onInlineTags: "warn",
+          blogSidebarTitle: "最近文章",
         },
         theme: {
           customCss: "./src/css/custom.css",

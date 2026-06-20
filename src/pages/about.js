@@ -88,50 +88,46 @@ const timelineData = [
 export default function About() {
   return (
     <Layout title="關於我" description="了解更多關於 7Lun 的故事">
-      <main style={{ backgroundColor: "#fdfbf7", paddingBottom: "4rem", minHeight: "100vh" }}>
+      <main className={timelineStyles.aboutMain}>
         <div className="container">
-          
-          {/* Header 區塊：照片與簡短開場白 */}
-          <div className={timelineStyles.introSection}>
+          {/* 編輯風頁首：照片與簡短開場白 */}
+          <header className={timelineStyles.pageHeader}>
             <img
               src={authorPic}
               alt="7Lun"
               className={timelineStyles.introAvatar}
             />
             <div className={timelineStyles.introContent}>
+              <span className={timelineStyles.kicker}>關於我 ・ ABOUT</span>
               <h1 className={timelineStyles.introTitle}>你好，我是 7Lun。</h1>
               <p className={timelineStyles.introText}>
-                喜歡在開發中探索可能，<br />
-                並記錄下那些豁然開朗的瞬間。
+                喜歡在開發中探索可能，並記錄下那些豁然開朗的瞬間。
               </p>
             </div>
-          </div>
+          </header>
 
-          {/* 時間軸主體 */}
-          <div className={timelineStyles.timelineContainer} style={{ marginTop: "3rem" }}>
-            {timelineData.map((item, index) => {
-              const positionClass = index % 2 === 0 ? timelineStyles.leftItem : timelineStyles.rightItem;
-              return (
-                <div key={index} className={`${timelineStyles.timelineItem} ${positionClass}`}>
-                  <div className={timelineStyles.timelineDot}></div>
-                  <div className={timelineStyles.timelineContent}>
-                    <h3 className={timelineStyles.timelineTitle}>{item.title}</h3>
-                    {item.content.map((paragraph, pIndex) => (
-                      <p key={pIndex} className={timelineStyles.timelineText}>
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
+          {/* 編輯風故事時間軸（單欄、章節編號） */}
+          <div className={timelineStyles.story}>
+            {timelineData.map((item, index) => (
+              <section key={index} className={timelineStyles.chapter}>
+                <span className={timelineStyles.chapterMarker} />
+                <div className={timelineStyles.chapterHead}>
+                  <span className={timelineStyles.chapterNum}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className={timelineStyles.chapterTitle}>{item.title}</h3>
                 </div>
-              );
-            })}
+                {item.content.map((paragraph, pIndex) => (
+                  <p key={pIndex} className={timelineStyles.chapterText}>
+                    {paragraph}
+                  </p>
+                ))}
+              </section>
+            ))}
           </div>
 
           {/* 結尾字樣 */}
-          <div style={{ textAlign: "center", marginTop: "4rem", color: "#6f4e37", fontSize: "1.3rem", fontWeight: "600", letterSpacing: "2px" }}>
-            ── 繼續路途上 ──
-          </div>
-
+          <div className={timelineStyles.storyEnd}>── 繼續路途上 ──</div>
         </div>
       </main>
     </Layout>

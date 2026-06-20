@@ -334,6 +334,44 @@ span,
   --doc-sidebar-width: 270px;
 }
 
+/* --- 內容區頂部留白（40px，與左側導覽同高） --- */
+[class*="docMainContainer"] {
+  padding-top: 40px;
+}
+
+/* 去掉內層 container 預設的上 padding，讓麵包屑正好落在 40px */
+[class*="docMainContainer"] > .container {
+  padding-top: 0 !important;
+}
+
+/* --- 左側導覽：跟著頁面一起捲動（取消固定吸頂），並下推對齊 --- */
+@media (min-width: 997px) {
+  [class*="docSidebarContainer"] {
+    position: static !important;
+    height: auto !important;
+    margin-top: 0 !important;
+  }
+  [class*="sidebarViewport"] {
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  [class*="sidebar_"] {
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    /* 移除預設的 navbar 高度 padding（搭配上面 margin-top:0），否則會被多推一整個 navbar 高 */
+    padding-top: 0 !important;
+  }
+  /* 32px + nav 自身 8px ≈ 40px，與右側麵包屑同高 */
+  .theme-doc-sidebar-menu {
+    padding-top: 32px;
+  }
+}
+
 /* --- 中間閱讀欄：加寬留白 + 呼吸感 --- */
 [class*="docItemCol"] {
   padding-left: 1.5rem;
@@ -501,4 +539,205 @@ span,
 .breadcrumbs__item--active .breadcrumbs__link {
   background-color: rgba(111, 78, 55, 0.08);
   color: #6f4e37;
+}
+
+/* --- 分類索引頁（generated-index）→ 一行一線清單，不是卡片 --- */
+/* 每筆佔滿整行、移除卡片間距，讓細線連續 */
+.col:has(> [class*="cardContainer"]) {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 0 !important;
+}
+
+/* 第一筆補上頂線，整體像連續的目錄 */
+.col:has(> [class*="cardContainer"]):first-child [class*="cardContainer"] {
+  border-top: 1px solid rgba(111, 78, 55, 0.12) !important;
+}
+
+/* 去掉卡片外框，改成只有底部細線的列 */
+[class*="cardContainer"] {
+  padding: 0.85rem 0.4rem !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.12) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition:
+    background 0.25s ease,
+    padding-left 0.25s ease !important;
+}
+
+[class*="cardContainer"]:hover {
+  background: rgba(111, 78, 55, 0.04) !important;
+  padding-left: 1rem !important;
+}
+
+[class*="cardTitle"] {
+  font-family: "Noto Serif TC", serif !important;
+  color: #5d4037 !important;
+  font-size: 1.2rem !important;
+  margin: 0 !important;
+}
+
+/* 只留標題，不顯示描述 */
+[class*="cardDescription"] {
+  display: none !important;
+}
+
+/* --- 上一頁／下一頁：改成線體（去卡片框） --- */
+.pagination-nav__link {
+  border: none !important;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.15) !important;
+  border-radius: 0 !important;
+  padding: 1.2rem 0.3rem !important;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease !important;
+}
+
+.pagination-nav__link:hover {
+  background: rgba(111, 78, 55, 0.04) !important;
+  border-color: #e1cbad !important;
+}
+
+.pagination-nav__sublabel {
+  color: #a88b75 !important;
+}
+
+.pagination-nav__label {
+  color: #6f4e37 !important;
+}
+
+/* ===================================================== */
+/* === 生存日誌（blog）編輯／報紙風 === */
+/* ===================================================== */
+
+/* 頂部留白與其他頁一致 */
+.blog-wrapper .container.margin-vert--lg {
+  padding-top: 40px;
+}
+
+/* 左側「最近文章」往左靠（去掉欄位左 padding，再往左移） */
+.blog-wrapper .row > aside.col {
+  padding-left: 0;
+  margin-left: -2.5rem;
+  /* 左欄縮窄，但保留足夠寬度讓標題不換行 */
+  flex: 0 0 18% !important;
+  max-width: 18% !important;
+}
+
+/* 側欄文章連結字級縮小，避免標題折到下一行 */
+[class*="sidebarItemLink"] {
+  font-size: 0.82rem !important;
+  line-height: 1.5 !important;
+}
+
+/* 文章內容加寬 + 與左側欄拉開距離 */
+.blog-wrapper .row > main.col {
+  flex: 0 0 65.3333% !important;
+  max-width: 65.3333% !important;
+  padding-left: 2.5rem;
+}
+
+/* 右側 TOC 往右移一點 */
+.blog-post-page .row > .col.col--2 {
+  margin-right: -2rem;
+}
+
+/* 標題：英文在上、中文在下，下方加細線 */
+[class*="sidebarItemTitle"] {
+  color: #644632 !important;
+  letter-spacing: 0.5px;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.2);
+}
+
+[class*="sidebarItemTitle"]::before {
+  content: "RECENT POSTS";
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #a88b75;
+}
+
+/* --- 編輯風刊頭 --- */
+.blog-masthead {
+  padding-bottom: 1.6rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 3px double rgba(111, 78, 55, 0.3);
+}
+
+.blog-masthead__kicker {
+  display: inline-block;
+  font-family: "Noto Sans TC", sans-serif !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a88b75;
+  margin-bottom: 0.8rem;
+}
+
+.blog-masthead__title {
+  font-size: 2.6rem !important;
+  color: #644632 !important;
+  margin: 0 0 1rem !important;
+}
+
+.blog-masthead__lead {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #795548;
+  margin: 0;
+  max-width: 680px;
+}
+
+/* --- 文章列表：一篇一篇用細線分隔 --- */
+.blog-list-page article {
+  padding-bottom: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.blog-list-page article:last-of-type {
+  border-bottom: none;
+}
+
+/* 標題：襯線暖棕 + hover */
+.blog-list-page article header h2 a {
+  color: #644632 !important;
+}
+
+.blog-list-page article header h2 a:hover {
+  color: #6f4e37 !important;
+  text-decoration: none !important;
+}
+
+/* 日期 / 閱讀時間 暖色 */
+.blog-wrapper time {
+  color: #a88b75;
+}
+
+/* 內文 / 摘要 暖色 */
+.blog-list-page article .markdown {
+  color: #5d4037;
+}
+
+/* 單篇文章頁主標暖棕 */
+.blog-post-page article header h1 {
+  color: #644632 !important;
+}
+
+/* 文章底部「標籤／閱讀更多」改線體（上方細線分隔） */
+.blog-wrapper article footer.row {
+  border-top: 1px solid rgba(111, 78, 55, 0.15);
+  padding-top: 1.2rem;
+}
+
+/* 標籤去圓角（報紙硬邊） */
+[class*="tagRegular"] {
+  border-radius: 2px !important;
 }

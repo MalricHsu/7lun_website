@@ -3,20 +3,65 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import styles from "./index.module.css";
 
-function PortfolioHeader() {
+function SectionKicker({ kicker, title }) {
   return (
-    <div className="container" style={{ padding: "4rem 1rem" }}>
-      <h1 className={styles.sectionTitle} style={{ textAlign: "left" }}>7Lun專案作品集</h1>
-      <p className={styles.description} style={{ textAlign: "left", lineHeight: "1.8" }}>
-        這裡紀錄了我從零開始，一步步打磨出的專案成果。
-        不只是程式碼的堆疊，更是解決問題、提升使用者體驗的實戰軌跡。
-      </p>
+    <div className={styles.sectionHeader}>
+      <span className={styles.kicker}>{kicker}</span>
+      <h2 className={styles.editorialTitle}>{title}</h2>
     </div>
   );
 }
 
+function ProjectCard({ project }) {
+  return (
+    <article className={styles.featureCard}>
+      <div className={styles.featureImageWrap}>
+        <img
+          src={project.img}
+          alt={project.title}
+          className={styles.featureImg}
+        />
+      </div>
+      <div className={styles.featureBody}>
+        <span className={styles.featureCategory}>{project.category}</span>
+        <h3 className={styles.featureTitle}>{project.title}</h3>
+        <p className={styles.featureDesc}>{project.desc}</p>
+        <div className={styles.featureTags}>
+          {project.tags.map((tag, i) => (
+            <span key={i} className={styles.featureTag}>
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className={styles.featureLinks}>
+          {project.github && (
+            <>
+              <Link to={project.github} className={styles.featureLink}>
+                GitHub Repo ↗
+              </Link>
+              <span className={styles.featureSep}>・</span>
+            </>
+          )}
+          {project.demo && (
+            <>
+              <Link to={project.demo} className={styles.featureLink}>
+                Demo ↗
+              </Link>
+              <span className={styles.featureSep}>・</span>
+            </>
+          )}
+          <Link to={project.link} className={styles.featureLink}>
+            開發紀錄 ↗
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function PortfolioPage() {
-   const projects = [
+  // 團隊合作作品
+  const teamProjects = [
     {
       title: "伴你在日常",
       category: "電商主題",
@@ -25,7 +70,7 @@ export default function PortfolioPage() {
       img: require("@site/static/img/lifewithyou.png").default,
       tags: ["Vite", "Bootstrap 5", "SCSS", "GSAP", "leaflet", "Git", "GitHub"],
       github: "https://github.com/Duncanin/with_your_life",
-      demo: "https://duncanin.github.io/with_your_life/"
+      demo: "https://duncanin.github.io/with_your_life/",
     },
     {
       title: "YeStep 每一步，找回生活的呼吸",
@@ -33,48 +78,60 @@ export default function PortfolioPage() {
       desc: "以「把 Yes 變成 Step」為核心精神的步道資訊平台。專為忙碌上班族與親子家庭設計，鼓勵大眾跨出探索自然的第一步。透過直覺的檢索體驗，陪伴你走入山林，找回身心療癒的寧靜。",
       link: "/blog/yestep-project",
       img: require("@site/static/img/yestep.png").default,
-      tags: ["Vite", "React", "JavaScript", "Bootstrap 5", "SCSS", "Swiper", "Lottie", "Chart.js", "Axios", "Git", "GitHub"],
+      tags: [
+        "Vite",
+        "React",
+        "JavaScript",
+        "Bootstrap 5",
+        "SCSS",
+        "Swiper",
+        "Lottie",
+        "Chart.js",
+        "Axios",
+        "Git",
+        "GitHub",
+      ],
       github: "https://github.com/MalricHsu/yestep",
-      demo: "https://malrichsu.github.io/yestep/#/"
+      demo: "https://malrichsu.github.io/yestep/#/",
     },
   ];
 
+  // 個人作品（之後新增：依上方格式填入物件即可）
+  const personalProjects = [];
+
   return (
     <Layout title="專案作品" description="7lun 的前端專案展示">
-      <main className={styles.mainContainer} style={{ paddingTop: "0" }}>
-        <PortfolioHeader />
+      <main className={styles.mainContainer}>
         <div className="container">
-          <div className={styles.projectFlexContainer}>
-            {projects.map((project, idx) => (
-              <Link
-                key={idx}
-                to={project.link}
-                className={styles.projectItemCard}
-              >
-                <div className={styles.projectImageWrapper}>
-                  <img
-                    src={project.img}
-                    alt={project.title}
-                    className={styles.projectImg}
-                  />
-                </div>
-                <div className={styles.projectContent}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectDesc}>{project.desc}</p>
-                  <div className={styles.tagGroup}>
-                    {project.tags.map((tag, i) => (
-                      <span key={i} className={styles.tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <span className={styles.projectLinkText}>
-                    查看專案細節 →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <header className={styles.pageHeader}>
+            <span className={styles.kicker}>作品集 ・ PORTFOLIO</span>
+            <h1 className={styles.pageTitle}>專案作品集</h1>
+            <p className={styles.pageLead}>
+              這裡紀錄了我從零開始，一步步打磨出的專案成果。不只是程式碼的堆疊，更是解決問題、提升使用者體驗的實戰軌跡。
+            </p>
+          </header>
+
+          <section className={styles.portfolioGroup}>
+            <SectionKicker kicker="團隊協作 ・ TEAM" title="團隊合作作品" />
+            <div className={styles.featureGrid}>
+              {teamProjects.map((project, idx) => (
+                <ProjectCard key={idx} project={project} />
+              ))}
+            </div>
+          </section>
+
+          <section className={styles.portfolioGroup}>
+            <SectionKicker kicker="個人專案 ・ PERSONAL" title="個人作品" />
+            {personalProjects.length === 0 ? (
+              <p className={styles.contentsEmpty}>個人作品準備中，敬請期待。</p>
+            ) : (
+              <div className={styles.featureGrid}>
+                {personalProjects.map((project, idx) => (
+                  <ProjectCard key={idx} project={project} />
+                ))}
+              </div>
+            )}
+          </section>
         </div>
       </main>
     </Layout>

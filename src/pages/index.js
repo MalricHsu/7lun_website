@@ -32,42 +32,34 @@ function AboutMe() {
     <section className={styles.aboutSection}>
       <div className="container">
         <div className={styles.aboutContent}>
+          <figure className={styles.avatarWrapper}>
+            <img src={authorPic} alt="7Lun" className={styles.avatarImage} />
+          </figure>
           <div className={styles.aboutText}>
-            <span className={styles.aboutKicker}>自我介紹 ・ ABOUT THE AUTHOR</span>
-            <h1 className={styles.greeting}>Hi, 我是 7Lun</h1>
-            <h5 className={styles.subGreeting}>收錄我開發的軌跡</h5>
+            <span className={styles.aboutKicker}>— TAIPEI, TAIWAN (R.O.C)</span>
+            <h1 className={styles.greeting}>7Lun</h1>
+            <h5 className={styles.subGreeting}>FRONT-END DEVELOPER</h5>
             <p className={styles.description}>
-              我擅長把抽象的需求，拆解成清晰且容易理解的結構，
-              讓程式碼不只是能運作，也能被人讀懂與維護。
-              在這樣的開發思維下，目前主力於 <strong>React 生態系</strong> 與{" "}
-              <strong>Vite 開發流程</strong>，同時也正在探索自學{" "}
-              <strong>Vue 框架</strong>。
+              專注於 <strong>React</strong> 與 <strong>Vue</strong>{" "}
+              前端開發，熟悉 JavaScript 生態系與 <strong>Vite</strong>{" "}
+              開發流程，擅長將需求拆解並轉化為清晰、易維護的程式架構。
               <br />
               <br />
-              我用「語法手冊」提煉語法重點，用「生存日誌」記錄每一次卡關與突破。
-              這裡不只是學習筆記，更是我將踩坑經驗轉化為成長的軌跡。
+              這裡收錄我的技術筆記與開發日誌，用「語法手冊」整理知識，
+              用「生存日誌」記錄每一次踩坑與突破。
             </p>
             <div className={styles.actionButtons}>
-              <Link
-                className={`${styles.editorialBtn} ${styles.editorialBtnPrimary}`}
-                to="/about"
-              >
-                關於我
+              <Link className={styles.heroLink} to="/about">
+                關於我 ↗
               </Link>
-              <Link className={styles.editorialBtn} to="/blog">
-                生存日誌
+              <Link className={styles.heroLink} to="/blog">
+                生存日誌 ↗
               </Link>
-              <Link className={styles.editorialBtn} to="/docs/intro">
-                語法手冊
+              <Link className={styles.heroLink} to="/docs/intro">
+                語法手冊 ↗
               </Link>
             </div>
           </div>
-          <figure className={styles.avatarWrapper}>
-            <img src={authorPic} alt="7Lun" className={styles.avatarImage} />
-            <figcaption className={styles.avatarCaption}>
-              7Lun ・ 前端開發者
-            </figcaption>
-          </figure>
         </div>
       </div>
     </section>
@@ -76,45 +68,49 @@ function AboutMe() {
 
 // --- 技能區 (Skills) → 報紙索引清單 ---
 function Skills() {
-  const skills = {
-    base: [{ title: "HTML" }, { title: "CSS / SCSS" }, { title: "JavaScript" }],
-    frameworks: [{ title: "React" }, { title: "Vue" }],
-    tools: [
-      { title: "Vite" },
-      { title: "Mock API" },
-      { title: "API Integration" },
-    ],
-    collaboration: [
-      { title: "Code Quality" },
-      { title: "Git / GitHub" },
-      { title: "AI Collaboration" },
-    ],
-  };
-
-  const rows = [
-    { zh: "核心", en: "CORE", items: skills.base },
-    { zh: "框架", en: "FRAMEWORKS", items: skills.frameworks },
-    { zh: "工具", en: "TOOLS", items: skills.tools },
-    { zh: "協作", en: "COLLABORATION", items: skills.collaboration },
+  const groups = [
+    {
+      en: "React",
+      zh: "React 生態",
+      items: ["React", "React Router", "Redux Toolkit", "React Hook Form"],
+      desc: "具備 SPA 專案開發經驗，熟悉元件設計與狀態管理。",
+    },
+    {
+      en: "Vue",
+      zh: "Vue 生態",
+      items: ["Vue 3", "Composition API", "Vue Router", "Nuxt 4"],
+      desc: "持續投入 Vue 生態系學習與實作。",
+    },
+    {
+      en: "Frontend",
+      zh: "前端開發",
+      items: ["HTML5", "CSS3", "SCSS", "JavaScript", "RWD"],
+      desc: "能獨立完成 Figma 設計稿切版、響應式介面開發與 API 串接。",
+    },
+    {
+      en: "Workflow",
+      zh: "開發流程",
+      items: ["Git", "GitHub", "Vite", "Vercel", "Render", "AI Tools"],
+      desc: "熟悉版本控制、部署流程與 AI 輔助開發。",
+    },
   ];
 
   return (
     <section className={styles.skillsSection}>
       <div className="container">
         <SectionKicker kicker="專業技能 ・ SKILLS" title="技能 Skill" />
-        <dl className={styles.skillIndex}>
-          {rows.map((r) => (
-            <div key={r.en} className={styles.skillIndexRow}>
-              <dt className={styles.skillIndexLabel}>
-                <span className={styles.skillIndexLabelZh}>{r.zh}</span>
-                <span className={styles.skillIndexLabelEn}>{r.en}</span>
-              </dt>
-              <dd className={styles.skillIndexNames}>
-                {r.items.map((s) => s.title).join(" ・ ")}
-              </dd>
+        <div className={styles.skillStack}>
+          {groups.map((g) => (
+            <div key={g.en} className={styles.skillBlock}>
+              <div className={styles.skillBlockHead}>
+                <h3 className={styles.skillBlockTitle}>{g.en}</h3>
+                <span className={styles.skillBlockZh}>{g.zh}</span>
+              </div>
+              <p className={styles.skillBlockNames}>{g.items.join(" ・ ")}</p>
+              <p className={styles.skillBlockDesc}>{g.desc}</p>
             </div>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   );
@@ -160,7 +156,10 @@ function Portfolio() {
   return (
     <section className={styles.portfolioSection}>
       <div className="container">
-        <SectionKicker kicker="精選作品 ・ PORTFOLIO" title="專案 Project" />
+        <SectionKicker
+          kicker="團隊協作作品 ・ PORTFOLIO"
+          title="專案 Project"
+        />
         <div className={styles.featureGrid}>
           {projects.map((project, idx) => (
             <article key={idx} className={styles.featureCard}>
@@ -186,15 +185,15 @@ function Portfolio() {
                 </div>
                 <div className={styles.featureLinks}>
                   <Link to={project.github} className={styles.featureLink}>
-                    GitHub
+                    GitHub Repo ↗
                   </Link>
                   <span className={styles.featureSep}>・</span>
                   <Link to={project.demo} className={styles.featureLink}>
-                    Demo
+                    Demo ↗
                   </Link>
                   <span className={styles.featureSep}>・</span>
                   <Link to={project.link} className={styles.featureLink}>
-                    開發紀錄
+                    開發紀錄 ↗
                   </Link>
                 </div>
               </div>
@@ -232,52 +231,53 @@ function LatestNotes() {
   const formatDate = (s) => {
     const d = new Date(s);
     if (isNaN(d)) return s;
-    const pad = (n) => String(n).padStart(2, "0");
-    return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}`;
+    return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
   };
 
   return (
     <section className={styles.skillsSection}>
       <div className="container">
-        <div className={styles.contentsHeader}>
-          <SectionKicker kicker="本期文章 ・ CONTENTS" title="最新語法手冊" />
-          <Link to="/docs/intro" className={styles.seeAllLink}>
-            查看全部 →
-          </Link>
-        </div>
+        <SectionKicker kicker="本期文章 ・ CONTENTS" title="最新語法手冊" />
 
         {recent.length === 0 ? (
           <p className={styles.contentsEmpty}>筆記整理中，敬請期待。</p>
         ) : (
-          <ol className={styles.contentsList}>
-            {recent.map((note, i) => {
-              const href = permalinks[note.id] || "/docs/intro";
-              return (
-                <li key={note.id} className={styles.contentsItem}>
-                  <Link to={href} className={styles.contentsRow}>
-                    <span className={styles.contentsNum}>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className={styles.contentsMain}>
-                      <h3 className={styles.contentsTitle}>{note.title}</h3>
-                      {note.tags && note.tags.length > 0 && (
-                        <span className={styles.contentsTags}>
-                          {note.tags.slice(0, 3).map((t) => (
-                            <span key={t} className={styles.contentsTag}>
-                              {t}
-                            </span>
-                          ))}
-                        </span>
-                      )}
-                    </span>
-                    <span className={styles.contentsDate}>
-                      {formatDate(note.date)}
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ol>
+          <>
+            <ol className={styles.contentsList}>
+              {recent.map((note, i) => {
+                const href = permalinks[note.id] || "/docs/intro";
+                return (
+                  <li key={note.id} className={styles.contentsItem}>
+                    <Link to={href} className={styles.contentsRow}>
+                      <span className={styles.contentsNum}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className={styles.contentsMain}>
+                        <h3 className={styles.contentsTitle}>{note.title}</h3>
+                        {note.tags && note.tags.length > 0 && (
+                          <span className={styles.contentsTags}>
+                            {note.tags.slice(0, 3).map((t) => (
+                              <span key={t} className={styles.contentsTag}>
+                                {t}
+                              </span>
+                            ))}
+                          </span>
+                        )}
+                      </span>
+                      <span className={styles.contentsDate}>
+                        {formatDate(note.date)}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ol>
+            <div className={styles.seeAllRow}>
+              <Link to="/docs/intro" className={styles.seeAllLink}>
+                查看全部 →
+              </Link>
+            </div>
+          </>
         )}
       </div>
     </section>
@@ -327,23 +327,26 @@ function Testimonials() {
             align-items: stretch;
           }
           .swiper-pagination-bullet {
+            width: 22px;
+            height: 2px;
+            border-radius: 0;
             background-color: var(--ifm-color-primary) !important;
-            opacity: 0.2;
+            opacity: 0.25;
+            transition: opacity 0.3s ease, width 0.3s ease;
           }
           .swiper-pagination-bullet-active {
             opacity: 1;
-            width: 24px;
-            border-radius: 4px;
-            transition: width 0.3s ease;
+            width: 36px;
           }
           .review-card-inner {
+            margin: 0;
             background-color: #fdfbf7;
             padding: 2.2rem 2rem;
             border: 1px solid rgba(111, 78, 55, 0.15);
             border-radius: 2px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             height: 100%;
             cursor: grab;
           }
@@ -365,6 +368,7 @@ function Testimonials() {
             text-align: justify;
           }
           .review-card-byline {
+            margin-top: auto;
             border-top: 1px solid rgba(111, 78, 55, 0.15);
             padding-top: 1rem;
           }
@@ -393,8 +397,8 @@ function Testimonials() {
       </style>
       <div className="container">
         <SectionKicker
-          kicker="合作回饋 ・ TESTIMONIALS"
-          title="讀者來函"
+          kicker="合作區 ・ TESTIMONIALS"
+          title="合作與反饋"
           center
         />
 

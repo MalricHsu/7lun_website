@@ -1,0 +1,127 @@
+.header {
+  padding-bottom: 1.6rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 3px double rgba(111, 78, 55, 0.3);
+}
+
+.kicker {
+  display: inline-block;
+  font-family: "Noto Sans TC", sans-serif !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a88b75;
+  margin-bottom: 0.8rem;
+}
+
+.h1 {
+  font-size: 2.6rem !important;
+  color: #644632 !important;
+  margin: 0 0 1rem !important;
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #795548;
+  margin: 0;
+  max-width: 760px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  border-bottom: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.item:first-child {
+  border-top: 1px solid rgba(111, 78, 55, 0.12);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.5rem 0.3rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background 0.25s ease, padding-left 0.25s ease;
+}
+
+.row:hover {
+  background: rgba(111, 78, 55, 0.04);
+  padding-left: 0.8rem;
+}
+
+.num {
+  font-family: "Noto Serif TC", serif !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e1cbad;
+  line-height: 1;
+  min-width: 2.4rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.title {
+  font-family: "Noto Serif TC", serif !important;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #5d4037;
+}
+
+.arrow {
+  color: #a88b75;
+  font-size: 1.2rem;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.row:hover .arrow {
+  transform: translateX(4px);
+  color: #6f4e37;
+}
+
+.rowDisabled {
+  cursor: default;
+}
+
+.rowDisabled:hover {
+  background: transparent;
+  padding-left: 0.3rem;
+}
+
+.rowDisabled .title {
+  color: #b9a489;
+}
+
+.soon {
+  font-family: "Noto Sans TC", sans-serif !important;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #b9a489;
+  border: 1px solid rgba(111, 78, 55, 0.2);
+  border-radius: 2px;
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+}
+
+.end {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 3px double rgba(111, 78, 55, 0.3);
+  color: #a88b75;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}

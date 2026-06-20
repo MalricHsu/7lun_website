@@ -2,16 +2,18 @@
 .ribbonDate,
 .ribbonIssue {
   position: absolute;
-  top: 2.15rem;
+  top: 2.5rem;
   font-family: "Noto Sans TC", sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #a88b75;
   white-space: nowrap;
   z-index: 5;
   pointer-events: none;
-  transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  transition:
+    top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
 }
 
 .ribbonDate {
@@ -25,7 +27,7 @@
 /* 滾動縮減時，跟著上移對齊縮小後的標題 */
 :global(.navbar--shrunk) .ribbonDate,
 :global(.navbar--shrunk) .ribbonIssue {
-  top: 1.05rem;
+  top: 1.5rem;
 }
 
 /* 手機版 navbar 改為單列(品牌+漢堡)，空間不足 → 隱藏避免重疊 */
