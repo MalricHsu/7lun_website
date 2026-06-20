@@ -1,5 +1,5 @@
 ---
-title: 04｜ JavaScript 函式簡介
+title: 04｜ JavaScript 函式設計
 sidebar_position: 5
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-10-03
@@ -10,9 +10,9 @@ date: 2025-10-03
 
 ### 一、函式 (Function)
 
-函式是一段可重複使用的程式碼，能夠 **接收輸入、處理資料、回傳結果**。
+- **函式**：是一段可重複使用的程式碼，能夠 **接收輸入、處理資料、回傳結果**。
 
-→ 一個函式本身就是一段 JavaScript 程序—包含用於執行某一個任務或計算的語法。**要呼叫某一個函式之前，你必需先在這個函式欲執行的 scope 中定義它**。
+- 一個函式本身就是一段 JavaScript 程序，包含用於執行某一個任務或計算的語法。**要呼叫某一個函式之前，你必需先在這個函式欲執行的 scope 中定義它**。
 
 #### 1. 功能
 - 函式的名稱。
@@ -64,14 +64,14 @@ console.log(sum(10, 20));  //  30
     - **結束函式執行（`return` 後函式不再繼續執行）**。
     - `return` 的結果可以 **存入變數、作為其他運算或傳給其他函式使用**。
 
-```js
-function sum(a, b) {
-  return a + b;  //  回傳結果給外部
-}
+    ```js
+    function sum(a, b) {
+      return a + b;  //  回傳結果給外部
+    }
 
-let result = sum(3, 5);
-console.log(result);  //  8
-```
+    let result = sum(3, 5);
+    console.log(result);  //  8
+    ```
 
 - **`console.log`**
   - **定義**：用來 **在控制台顯示訊息**。
@@ -79,14 +79,14 @@ console.log(result);  //  8
     - 幫助開發者檢查資料或程式執行狀態。
     - **只輸出，不會傳回值**。
 
-```js
-function sum(a, b) {
-  console.log(a + b);  //  印出結果，但不回傳
-}
+    ```js
+    function sum(a, b) {
+      console.log(a + b);  //  印出結果，但不回傳
+    }
 
-let result = sum(3, 5);
-console.log(result);  //  undefined
-```
+    let result = sum(3, 5);
+    console.log(result);  //  undefined
+    ```
 
 #### 5. 差別整理
 
@@ -100,16 +100,16 @@ console.log(result);  //  undefined
 #### 6. if 與 function 結合使用
 - **直接寫 if 的話，Js 裡只會執行一次**。
 
-```js
-function addNum(num1, num2) {
-  if (2 > 1) {
-    return num1 + num2;  //  如果 2>1 為真值，就回傳此結果，後續程式都不會跑
-  } else {
-    return 100;
+  ```js
+  function addNum(num1, num2) {
+    if (2 > 1) {
+      return num1 + num2;  //  如果 2>1 為真值，就回傳此結果，後續程式都不會跑
+    } else {
+      return 100;
+    }
   }
-}
-addNum(1, 2);  //  3
-```
+  addNum(1, 2);  //  3
+  ```
 
 #### 7. 課堂練習
 
@@ -128,9 +128,6 @@ const bmiStatesData = {
 checkBmiStates("overThin");
 checkBmiStates("normal");
 
-//   output
-//   你的體重過輕，指數為藍色
-//   你的體重正常，指數為紅色
 
 function checkBmiStates(status) {
   return `你的體重${bmiStatesData[status].state}，指數為${bmiStatesData[status].state}`;
@@ -138,9 +135,13 @@ function checkBmiStates(status) {
 
 console.log(checkBmiStates("overThin"));
 console.log(checkBmiStates("normal"));
+
+//   output
+//   你的體重過輕，指數為藍色
+//   你的體重正常，指數為紅色
 ```
 
-### 二、傳統函式與箭頭函式的差異
+### 二、延伸：傳統函式與箭頭函式的差異
 
 #### 1. 傳統函式 (Traditional Function) vs 箭頭函式 (Arrow Function)
 
@@ -173,11 +174,11 @@ const obj = {
   name: "Alice",
   greetTraditional: function() {
     console.log(this.name);
-    //   **傳統函式的 this 指向呼叫者 obj**
+    //   傳統函式的 this 指向呼叫者 obj
   },
   greetArrow: () => {
     console.log(this.name);
-    //   **箭頭函式的 this 綁定外層（這裡是全域），所以 undefined**
+    //   箭頭函式的 this 綁定外層（這裡是全域），所以 undefined
   }
 };
 

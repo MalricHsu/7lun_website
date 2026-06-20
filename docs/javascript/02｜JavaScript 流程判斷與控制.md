@@ -1,5 +1,5 @@
 ---
-title: 02｜ JavaScript 邏輯語法
+title: 02｜ JavaScript 流程判斷與控制
 sidebar_position: 2
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-09-26

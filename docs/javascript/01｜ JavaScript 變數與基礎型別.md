@@ -1,5 +1,5 @@
 ---
-title: 01｜ JavaScript 基礎語法
+title: 01｜ JavaScript 變數與基礎型別
 sidebar_position: 1
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-09-24

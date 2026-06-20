@@ -41,27 +41,25 @@ date: 2025-10-24
     }
   });
   ```
-- *進階設定參考*：[CodePen - 折線圖時間軸、顏色與標題修改範例](https://codepen.io/mfyvqhsn-the-bold/pen/gbPzKeZ?editors=1010)
+- *進階設定參考*：[JS直播第五週範例一：C3.js Codepen](https://codepen.io/mfyvqhsn-the-bold/pen/gbPzKeZ?editors=1010)
 
 #### 3. 網頁開發常見第三方套件
 
 - 開發網頁時常整合的套件類別：
-  1. **AJAX 請求**：`axios`
-  2. **圖表繪製**：`c3`, `d3`, `chart.js`
-  3. **分頁處理**：`pagination`
-  4. **輪播圖**：`swiper`
-  5. **地圖整合**：`leaflet`, `Google Maps API`
-  6. **動畫特效**：`aos`, `wow`, `gsap` (適合複雜的時間軸動畫控制)
-  7. **瀑布流版型**：`masonry`
-  8. **3D 視覺化**：`three.js`
-  9. **日曆/月曆**：`fullcalendar`
-  10. **時間格式處理**：`moment.js`, `dayjs`
-  11. **彈跳對話視窗**：`sweetalert2`
-  12. **表單驗證**：`validate.js`, `vee-validate`
-  13. **代碼風格檢查**：`eslint`
-  14. **多國語系**：`i18next`
-
----
+  - **AJAX 請求**：`axios`
+  - **圖表繪製**：`c3`、`d3`、`chart.js`
+  - **分頁處理**：`pagination`
+  - **輪播圖**：`swiper`
+  - **地圖整合**：`leaflet`、`Google Maps API`
+  - **動畫特效**：`aos`、`wow`、`gsap` (適合複雜的時間軸動畫控制)
+  - **瀑布流版型**：`masonry`
+  - **3D 視覺化**：`three.js`
+  - **日曆/月曆**：`fullcalendar`
+  - **時間格式處理**：`moment.js`、`dayjs`
+  - **彈跳對話視窗**：`sweetalert2`
+  - **表單驗證**：`validate.js`、`vee-validate`
+  - **代碼風格檢查**：`eslint`
+  - **多國語系**：`i18next`
 
 ### 二、資料處理（Object 靜態方法）
 
@@ -72,11 +70,42 @@ date: 2025-10-24
 
 #### 2. Object 屬性提取方法比較表
 
-| 方法 | 回傳內容 | 回傳型態 | 範例結果 |
-| --- | --- | --- | --- |
-| `Object.keys(obj)` | 取得所有**屬性名稱（key）** | 陣列 `[]` | `["name", "age"]` |
-| `Object.values(obj)` | 取得所有**屬性值（value）** | 陣列 `[]` | `["Tom", 25]` |
-| `Object.entries(obj)` | 取得所有**屬性鍵值對（key-value pair）** | 巢狀陣列 `[[key, value]]` | `[["name", "Tom"], ["age", 25]]` |
+<table>
+  <colgroup>
+    <col width="20%" />
+    <col width="25%" />
+    <col width="30%" />
+    <col width="25%" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>方法</th>
+      <th>回傳內容</th>
+      <th>回傳型態</th>
+      <th>範例結果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Object.keys(obj)</code></td>
+      <td>取得所有<strong>屬性名稱（key）</strong></td>
+      <td>陣列 <code>[]</code></td>
+      <td><code>["name", "age"]</code></td>
+    </tr>
+    <tr>
+      <td><code>Object.values(obj)</code></td>
+      <td>取得所有<strong>屬性值（value）</strong></td>
+      <td>陣列 <code>[]</code></td>
+      <td><code>["Tom", 25]</code></td>
+    </tr>
+    <tr>
+      <td><code>Object.entries(obj)</code></td>
+      <td>取得所有<strong>屬性鍵值對（key-value pair）</strong></td>
+      <td>巢狀陣列 <code>[[key, value]]</code></td>
+      <td><code>[["name", "Tom"], ["age", 25]]</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### 3. 語法與回傳格式
 
@@ -157,7 +186,7 @@ date: 2025-10-24
 #### 6. 實作練習一：累加計算地區數量
 
 - 將原始資料依地區統計加總：
-  - *練習連結*：[CodePen 練習](https://codepen.io/mfyvqhsn-the-bold/pen/azdGjoq?editors=0011)
+  - *練習連結*：[JS直播第五週範例二 Codepen](https://codepen.io/mfyvqhsn-the-bold/pen/azdGjoq?editors=0011)
 
   ```js
   let total = {};
@@ -184,7 +213,7 @@ date: 2025-10-24
 #### 7. 實作練習二：動態渲染地區人數列表
 
 - 使用 `Object.keys` 或 `Object.entries` 處理並渲染：
-  - *練習連結*：[CodePen 練習](https://codepen.io/mfyvqhsn-the-bold/pen/VYexBKg?editors=1011)
+  - *練習連結*：[JS直播第五週範例三-透過資料關聯，做物件取值 Codepen](https://codepen.io/mfyvqhsn-the-bold/pen/VYexBKg?editors=1011)
 
   ```js
   //   寫法一：使用 Object.keys
@@ -214,7 +243,7 @@ date: 2025-10-24
 #### 8. 實作練習三：轉換為物件陣列
 
 - 將 `{高雄: 2, 台北: 1}` 轉換為 `[{area: "高雄", num: 2}]`：
-  - *練習連結*：[CodePen 練習](https://codepen.io/mfyvqhsn-the-bold/pen/ZYQojKa?editors=0011)
+  - *練習連結*：[JS直播第五週範例四-重組陣列資料 I Codepen](https://codepen.io/mfyvqhsn-the-bold/pen/ZYQojKa?editors=0011)
 
   ```js
   const totalObj = { 高雄: 2, 台北: 1, 台中: 1 };
@@ -233,7 +262,7 @@ date: 2025-10-24
 #### 9. 實作練習四：轉換為雙維度鍵值對陣列
 
 - 將物件屬性轉換為 C3.js 或其他套件常用的二維陣列形式：
-  - *練習連結*：[CodePen 練習](https://codepen.io/mfyvqhsn-the-bold/pen/GgodBBp?editors=1111)
+  - *練習連結*：[JS直播第五週範例五-重組陣列資料 II-為 C3.js 所用 Codepen](https://codepen.io/mfyvqhsn-the-bold/pen/GgodBBp?editors=1111)
 
   ```js
   const totalObj = { 高雄: 2, 台北: 1, 台中: 1 };
@@ -248,11 +277,11 @@ date: 2025-10-24
   //   [["高雄", 2], ["台北", 1], ["台中", 1]]
   ```
 
----
+
 
 ### 三、延伸實作：串接打卡資料並使用 C3.js 繪製折線圖
 
-- 實作題連結：[CodePen 實作題](https://codepen.io/mfyvqhsn-the-bold/pen/EaPLpGO?editors=1011)
+- 實作題連結：[JS直播第五週實作題：串接每日任務打卡資料 Codepen](https://codepen.io/mfyvqhsn-the-bold/pen/EaPLpGO?editors=1011)
 
 #### 1. 實作程式碼
 

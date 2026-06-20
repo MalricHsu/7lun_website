@@ -178,7 +178,7 @@ date: 2025-10-01
 
 ### 二、物件 (Object)
 
-- 物件是一種**用來存放多個資料的容器**，資料以 **「鍵（key）–值（value）」** 配對的形式存在，可以用來描述「一個實體的屬性與功能」。
+- 物件是一種**用來存放多個資料的容器**，資料以 **「鍵（key）– 值（value）」** 配對的形式存在，可以用來描述「一個實體的屬性與功能」。
 - 物件是一批 **相關的數據** 或者 **功能**（通常包含了幾個變數及函式，當它們包含在物件中時被稱做「屬性」（properties）或「函式」（methods））。
 
 #### 1. 物件寫法
@@ -222,11 +222,42 @@ date: 2025-10-01
 
 - 屬性存取方式比較表：
 
-  | 存取方式 | 語法 | 適用情況 | 範例 |
-  | ---   | --- | --- | --- |
-  | **點記法 `.`** | `obj.key` | 屬性名稱**固定、合法識別字**（字母、數字、_，不能數字開頭） | `person.name` → "Tom" |
-  | **方括號 `[]`** | `obj["key"]` | 屬性名稱包含**空格、特殊字元、數字開頭，或用字串** | `person["home city"]` → "Taipei" |
-  | **變數動態存取** | `obj[varName]` | 屬性名稱存在於變數中，需要動態讀取或設定 | `let key = "score"; person[key] = 100;` → 新增 `score` 屬性 |
+  <table>
+    <colgroup>
+      <col style={{width: '20%'}} />
+      <col style={{width: '10%'}} />
+      <col style={{width: '40%'}} />
+      <col style={{width: '30%'}} />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>存取方式</th>
+        <th>語法</th>
+        <th>適用情況</th>
+        <th>範例</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>點記法 <code>.</code></strong></td>
+        <td><code>obj.key</code></td>
+        <td>屬性名稱<strong>固定、合法識別字</strong>（字母、數字、_，不能數字開頭）</td>
+        <td><code>person.name</code> → "Tom"</td>
+      </tr>
+      <tr>
+        <td><strong>方括號 <code>[]</code></strong></td>
+        <td><code>obj["key"]</code></td>
+        <td>屬性名稱包含<strong>空格、特殊字元、數字開頭，或用字串</strong></td>
+        <td><code>person["home city"]</code> → "Taipei"</td>
+      </tr>
+      <tr>
+        <td><strong>變數動態存取</strong></td>
+        <td><code>obj[varName]</code></td>
+        <td>屬性名稱存在於變數中，需要動態讀取或設定</td>
+        <td><code>let key = "score"; person[key] = 100;</code> → 新增 <code>score</code> 屬性</td>
+      </tr>
+    </tbody>
+  </table>
 
 - 各存取方式之程式碼範例：
 
@@ -348,7 +379,7 @@ date: 2025-10-01
     ],
     swimming: true,
     boss: "Mark"
-  };
+   };
   ```
 
 
@@ -386,8 +417,8 @@ date: 2025-10-01
 
 | 名稱 | 概念 | 特性 |
 | --- | --- | --- |
-| **淺拷貝 (Shallow Copy)** | **只拷貝物件的第一層屬性** | 如果屬性**值是物件或陣列，仍然共用同一個參考地址** |
-| **深拷貝 (Deep Copy)** | **拷貝整個物件（所有層級）** | 無論多少層，拷貝後完全獨立，修改不影響原物件 |
+| **淺拷貝 (Shallow Copy)** | 只拷貝物件的第一層屬性 | 如果屬性**值是物件或陣列，仍然共用同一個參考地址** |
+| **深拷貝 (Deep Copy)** | 拷貝整個物件（所有層級） | 無論多少層，拷貝後完全獨立，修改不影響原物件 |
 
 #### 2. 淺拷貝先備知識
 
@@ -495,13 +526,47 @@ date: 2025-10-01
 
 #### 6. 淺拷貝 vs 深拷貝
 
-  | 特性 | 淺拷貝 Shallow Copy | 深拷貝 Deep Copy |
-  | --- | --- | --- |
-  | **拷貝層級** | **只拷貝第一層** | **拷貝所有層級** |
-  | **共用內部物件** | **會共用** | **不會共用** |
-  | **常用方法** | `Object.assign({}, obj)` / `{ ...obj }` | `JSON.parse(JSON.stringify(obj))` / `structuredClone(obj)` |
-  | **適用範圍** | 層級簡單的物件 | 多層物件或陣列需要完全獨立 |
-  | **特性說明** | 快速，但內層物件仍共用同一參考 | 安全獨立，但需注意效能或特殊值（如函式、Symbol 無法用 JSON 方式複製） |
+  <table>
+    <colgroup>
+      <col style={{width: '18%'}} />
+      <col style={{width: '41%'}} />
+      <col style={{width: '41%'}} />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>特性</th>
+        <th>淺拷貝 Shallow Copy</th>
+        <th>深拷貝 Deep Copy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>拷貝層級</strong></td>
+        <td><strong>只拷貝第一層</strong></td>
+        <td><strong>拷貝所有層級</strong></td>
+      </tr>
+      <tr>
+        <td><strong>共用內部物件</strong></td>
+        <td><strong>會共用</strong></td>
+        <td><strong>不會共用</strong></td>
+      </tr>
+      <tr>
+        <td><strong>常用方法</strong></td>
+        <td><code>Object.assign({"{}"}, obj)</code> / <code>{"{ ...obj }"}</code></td>
+        <td><code>JSON.parse(JSON.stringify(obj))</code> / <code>structuredClone(obj)</code></td>
+      </tr>
+      <tr>
+        <td><strong>適用範圍</strong></td>
+        <td>層級簡單的物件</td>
+        <td>多層物件或陣列需要完全獨立</td>
+      </tr>
+      <tr>
+        <td><strong>特性說明</strong></td>
+        <td>快速，但內層物件仍共用同一參考</td>
+        <td>安全獨立，但需注意效能或特殊值（如函式、Symbol 無法用 JSON 方式複製）</td>
+      </tr>
+    </tbody>
+  </table>
 
 
 
