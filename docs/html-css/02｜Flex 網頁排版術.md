@@ -1,5 +1,5 @@
 ---
-title: 第二堂｜Flex 網頁排版術
+title: 02｜Flex 網頁排版術
 sidebar_position: 10
 tags: [CSS, HTML, 課程筆記]
 date: 2025-07-04
