@@ -91,7 +91,7 @@
   color: #6f4e37 !important;
   font-weight: 600;
   letter-spacing: 1.5px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-transform: uppercase;
   text-decoration: none !important;
   transition: color 0.25s ease;
@@ -381,10 +381,10 @@
 
 @media (max-width: 576px) {
   .actionButtons {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    width: 75%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
     margin: 2.4rem auto 0;
   }
 
@@ -395,6 +395,26 @@
   /* 手機技能滿版 */
   .greeting {
     font-size: 2.6rem;
+  }
+}
+
+/* 手機：縮短整體垂直長度，避免滑動過長（左右留白沿用 .container 預設 16px） */
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 48px 0;
+  }
+
+  .aboutSection {
+    margin-bottom: 64px;
+  }
+
+  .skillsSection,
+  .portfolioSection {
+    margin-bottom: 64px;
+  }
+
+  .skillStack {
+    gap: 1.8rem;
   }
 }
 

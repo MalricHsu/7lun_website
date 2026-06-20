@@ -168,7 +168,7 @@ span,
     color: #644632 !important;
   }
 
-  /* 2. 讓整個選單清單水平置中，並往下推一點 */
+  /* 2. 主選單（網站導覽：關於、作品、手冊…）水平置中，並往下推一點 */
   .menu__list {
     display: flex !important;
     flex-direction: column !important;
@@ -193,6 +193,21 @@ span,
     padding: 1.2rem 1rem !important;
     justify-content: center !important; /* 確保 Docusaurus 預設的 Flex 連結文字置中 */
     letter-spacing: 2px;
+  }
+
+  /* 5. 第二層面板（文章側邊欄目錄）改為靠左，不置中 */
+  .navbar-sidebar__item:last-child .menu__list {
+    align-items: stretch !important;
+  }
+
+  .navbar-sidebar__item:last-child .menu__list-item {
+    align-items: stretch;
+  }
+
+  .navbar-sidebar__item:last-child .menu__link {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding-left: 1.5rem !important;
   }
 }
 
@@ -493,7 +508,9 @@ span,
 
 .menu__link {
   border-radius: 4px;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .menu__link:hover {
@@ -542,11 +559,19 @@ span,
 }
 
 /* --- 分類索引頁（generated-index）→ 一行一線清單，不是卡片 --- */
-/* 每筆佔滿整行、移除卡片間距，讓細線連續 */
+/* 清單列與標題切齊：歸零 row 的負邊距，避免內容被推開 */
+[class*="generatedIndexPage"] .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* 每筆佔滿整行、移除卡片間距與左右留白，讓細線連續且與標題對齊 */
 .col:has(> [class*="cardContainer"]) {
   flex: 0 0 100% !important;
   max-width: 100% !important;
   margin-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 /* 第一筆補上頂線，整體像連續的目錄 */
@@ -556,7 +581,7 @@ span,
 
 /* 去掉卡片外框，改成只有底部細線的列 */
 [class*="cardContainer"] {
-  padding: 0.85rem 0.4rem !important;
+  padding: 0.85rem 0 !important;
   border: none !important;
   border-bottom: 1px solid rgba(111, 78, 55, 0.12) !important;
   border-radius: 0 !important;
@@ -582,6 +607,22 @@ span,
 /* 只留標題，不顯示描述 */
 [class*="cardDescription"] {
   display: none !important;
+}
+
+/* --- 手機：分類索引頁字級縮小，避免標題過大 --- */
+@media (max-width: 768px) {
+  .theme-doc-markdown > header h1,
+  [class*="generatedIndexPage"] header h1 {
+    font-size: 2rem !important;
+  }
+
+  [class*="cardTitle"] {
+    font-size: 1.05rem !important;
+  }
+
+  [class*="cardContainer"] {
+    padding: 0.7rem 0.4rem !important;
+  }
 }
 
 /* --- 上一頁／下一頁：改成線體（去卡片框） --- */
@@ -617,31 +658,34 @@ span,
   padding-top: 40px;
 }
 
-/* 左側「最近文章」往左靠（去掉欄位左 padding，再往左移） */
-.blog-wrapper .row > aside.col {
-  padding-left: 0;
-  margin-left: -2.5rem;
-  /* 左欄縮窄，但保留足夠寬度讓標題不換行 */
-  flex: 0 0 18% !important;
-  max-width: 18% !important;
-}
-
 /* 側欄文章連結字級縮小，避免標題折到下一行 */
 [class*="sidebarItemLink"] {
   font-size: 0.82rem !important;
   line-height: 1.5 !important;
 }
 
-/* 文章內容加寬 + 與左側欄拉開距離 */
-.blog-wrapper .row > main.col {
-  flex: 0 0 65.3333% !important;
-  max-width: 65.3333% !important;
-  padding-left: 2.5rem;
-}
+/* 桌機版：自訂三欄寬度與位移（手機版維持 Docusaurus 預設堆疊，避免跑版） */
+@media (min-width: 997px) {
+  /* 左側「最近文章」往左靠（去掉欄位左 padding，再往左移） */
+  .blog-wrapper .row > aside.col {
+    padding-left: 0;
+    margin-left: -2.5rem;
+    /* 左欄縮窄，但保留足夠寬度讓標題不換行 */
+    flex: 0 0 18% !important;
+    max-width: 18% !important;
+  }
 
-/* 右側 TOC 往右移一點 */
-.blog-post-page .row > .col.col--2 {
-  margin-right: -2rem;
+  /* 文章內容加寬 + 與左側欄拉開距離 */
+  .blog-wrapper .row > main.col {
+    flex: 0 0 65.3333% !important;
+    max-width: 65.3333% !important;
+    padding-left: 2.5rem;
+  }
+
+  /* 右側 TOC 往右移一點 */
+  .blog-post-page .row > .col.col--2 {
+    margin-right: -2rem;
+  }
 }
 
 /* 標題：英文在上、中文在下，下方加細線 */
@@ -740,4 +784,24 @@ span,
 /* 標籤去圓角（報紙硬邊） */
 [class*="tagRegular"] {
   border-radius: 2px !important;
+}
+
+/* --- 手機：字級縮小，比照語法手冊頁 --- */
+@media (max-width: 768px) {
+  .blog-masthead__title {
+    font-size: 2rem !important;
+  }
+
+  .blog-masthead__lead {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .blog-list-page article header h2 {
+    font-size: 1.5rem;
+  }
+
+  .blog-post-page article header h1 {
+    font-size: 2rem !important;
+  }
 }

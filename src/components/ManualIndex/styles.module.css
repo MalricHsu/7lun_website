@@ -125,3 +125,33 @@
   font-size: 0.9rem;
   letter-spacing: 2px;
 }
+
+/* --- 手機：縮小字級，避免標題過大 --- */
+@media (max-width: 768px) {
+  .h1 {
+    font-size: 2rem !important;
+  }
+
+  .lead {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .row {
+    gap: 1rem;
+    padding: 1.2rem 0.3rem;
+  }
+
+  .num {
+    font-size: 1.2rem;
+    min-width: 1.9rem;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+
+  .arrow {
+    font-size: 1.05rem;
+  }
+}
