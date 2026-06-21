@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config = {
   title: "記錄前端開發的生存軌跡。",
   tagline: "",
-  favicon: "img/logo.jpg",
+  favicon: "img/logo.png",
   stylesheets: [
     "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap",
     "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css",
@@ -62,7 +62,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: "img/og-image.jpg",
+      image: "img/og-image.png",
       colorMode: {
         disableSwitch: true,
         defaultMode: "light",
