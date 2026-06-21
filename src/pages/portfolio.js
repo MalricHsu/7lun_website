@@ -10,6 +10,7 @@ function SectionKicker({ kicker, title }) {
       <h2 className={styles.editorialTitle}>{title}</h2>
     </div>
   );
+
 }
 
 function ProjectCard({ project }) {
@@ -107,7 +108,7 @@ export default function PortfolioPage() {
             <span className={styles.kicker}>作品集 ・ PORTFOLIO</span>
             <h1 className={styles.pageTitle}>專案作品集</h1>
             <p className={styles.pageLead}>
-              這裡紀錄了我從零開始，一步步打磨出的專案成果。不只是程式碼的堆疊，更是解決問題、提升使用者體驗的實戰軌跡。
+              這裡紀錄了我從團隊協作到獨立開發的專案成果。不只是程式碼的堆疊，更是解決問題、提升使用者體驗的實戰軌跡。
             </p>
           </header>
 

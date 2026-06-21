@@ -438,6 +438,21 @@ span,
   margin-top: 2rem;
 }
 
+/* --- 內文超連結：加粗 + 底線，讓連結更明顯 --- */
+.theme-doc-markdown a:not(.hash-link):not(.card):not(.pagination-nav__link) {
+  font-weight: 700;
+  color: #6f4e37;
+  text-decoration: underline;
+  text-decoration-color: rgba(111, 78, 55, 0.4);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+.theme-doc-markdown a:not(.hash-link):not(.card):not(.pagination-nav__link):hover {
+  color: #a4501e;
+  text-decoration-color: #a4501e;
+}
+
 /* --- 表格 --- */
 .theme-doc-markdown table {
   display: table;
@@ -485,12 +500,20 @@ span,
   border-left-width: 4px;
 }
 
-.alert--info,
+/* 備註 (note) 維持暖咖啡色 */
 .alert--secondary {
   --ifm-alert-background-color: #f6f1e8;
   --ifm-alert-background-color-highlight: rgba(111, 78, 55, 0.08);
   --ifm-alert-foreground-color: #5d4037;
   --ifm-alert-border-color: #c9b59a;
+}
+
+/* 資訊 (info) 改為帶有灰藍/莫蘭迪藍調，與主視覺不衝突又能區別 */
+.alert--info {
+  --ifm-alert-background-color: #f0f4f8;
+  --ifm-alert-background-color-highlight: rgba(84, 110, 122, 0.08);
+  --ifm-alert-foreground-color: #37474f;
+  --ifm-alert-border-color: #90a4ae;
 }
 
 /* --- 左側分類導覽：字縮小、間距收緊、暖色 active / hover --- */

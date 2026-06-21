@@ -101,7 +101,7 @@ export default function About() {
               <span className={timelineStyles.kicker}>關於我 ・ ABOUT</span>
               <h1 className={timelineStyles.introTitle}>你好，我是 7Lun。</h1>
               <p className={timelineStyles.introText}>
-                喜歡在開發中探索可能，並記錄下那些豁然開朗的瞬間。
+               喜歡在開發中探索各種解法的可能性，也喜歡記錄下那些豁然開朗的瞬間。
               </p>
             </div>
           </header>

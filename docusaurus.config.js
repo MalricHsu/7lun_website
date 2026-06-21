@@ -3,7 +3,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "將設計稿轉化為直覺介面，記錄前端開發的生存軌跡。",
+  title: "記錄前端開發的生存軌跡。",
   tagline: "",
   favicon: "img/logo.jpg",
   stylesheets: [
