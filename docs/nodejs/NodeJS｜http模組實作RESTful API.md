@@ -1,11 +1,11 @@
 ---
-title: NodeJS｜ 原生http模組打造RESTful API
+title: NodeJS｜ http模組實作RESTful API
 sidebar_position: 2
 tags: [NodeJs, JavaScript, 知識點筆記]
 date: 2026-05-18
 ---
 
-- 使用 Node.js 原生 `http` 模組打造一支 Todo List RESTful API，沒有用 Express，目的是搞懂底層的 request / response 怎麼運作。
+- 使用 Node.js 原生 `http` 模組實作 Todo List RESTful API，沒有使用 Express，目的是搞懂底層的 request / response 怎麼運作。
 
 ### 一、專案結構
 
