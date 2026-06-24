@@ -98,7 +98,16 @@ export default function PortfolioPage() {
   ];
 
   // 個人作品（之後新增：依上方格式填入物件即可）
-  const personalProjects = [];
+  const personalProjects = [{
+      title: "HexSchool 2026 - Nelson Blog",
+      category: "部落格主題",
+      desc: "使用 Nuxt 4 開發部落格專案，從 SSR 架構、資料取得到 SEO 設計，完整實作並紀錄開發過程中的踩雷與解法細節，都記錄在部落格中",
+      link: "/blog/hexSchool-2026",
+      img: require("@site/static/img/hexSchool-2026.png").default,
+      tags: ["Nuxt 4", "Vue 3", "@nuxt/content", "Pinia", "Bootstrap 5", "Sass", "Zod", "Axios", "Swiper"],
+      github: "https://github.com/MalricHsu/hex-blog",
+      demo: "https://hex-blog-nu.vercel.app/",
+    },];
 
   return (
     <Layout title="專案作品" description="7lun 的前端專案展示">

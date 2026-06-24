@@ -9,6 +9,7 @@ const CATEGORIES = [
   { folder: "javascript", slug: "javascript", title: "JavaScript" },
   { folder: "react", slug: "react", title: "React" },
   { folder: "vue", slug: "vuejs", title: "Vue" },
+  { folder: "nuxt", slug: "nuxt", title: "Nuxt" },
   { folder: "nodejs", slug: "nodejs", title: "Node.js" },
   { folder: "git", slug: "git", title: "Git" },
 ];
