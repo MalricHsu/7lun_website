@@ -516,6 +516,14 @@ span,
   --ifm-alert-border-color: #90a4ae;
 }
 
+/* 注意 (warning) 暗紅色調 */
+.alert--warning {
+  --ifm-alert-background-color: #f5eded;
+  --ifm-alert-background-color-highlight: rgba(139, 0, 0, 0.08);
+  --ifm-alert-foreground-color: #5c1a1a;
+  --ifm-alert-border-color: #a04040;
+}
+
 /* --- 左側分類導覽：字縮小、間距收緊、暖色 active / hover --- */
 .menu__link,
 .menu__caret {

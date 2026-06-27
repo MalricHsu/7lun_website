@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "7lun 的程式手冊",
+    "description": "The title in the navbar"
+  },
+  "item.label.關於7lun": {
+    "message": "關於7lun",
+    "description": "Navbar item with label 關於7lun"
+  },
+  "item.label.專案作品": {
+    "message": "專案作品",
+    "description": "Navbar item with label 專案作品"
+  },
+  "item.label.語法手冊": {
+    "message": "語法手冊",
+    "description": "Navbar item with label 語法手冊"
+  },
+  "item.label.生存日誌": {
+    "message": "生存日誌",
+    "description": "Navbar item with label 生存日誌"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

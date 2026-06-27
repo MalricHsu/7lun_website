@@ -18,3 +18,37 @@ react:
   permalink: /react
   description: React
 
+Vue:
+  label: Vue
+  permalink: /vue
+  description: Vue.js 相關文章
+
+Nuxt:
+  label: Nuxt
+  permalink: /nuxt
+  description: Nuxt 框架相關文章
+
+六角學院:
+  label: 六角學院
+  permalink: /hexschool
+  description: 六角學院課程相關
+
+GitHub Pages:
+  label: GitHub Pages
+  permalink: /github-pages
+  description: GitHub Pages 部署相關
+
+Vercel:
+  label: Vercel
+  permalink: /vercel
+  description: Vercel 部署相關
+
+Render:
+  label: Render
+  permalink: /render
+  description: Render 部署相關
+
+Cloudflare Pages:
+  label: Cloudflare Pages
+  permalink: /cloudflare-pages
+  description: Cloudflare Pages 部署相關

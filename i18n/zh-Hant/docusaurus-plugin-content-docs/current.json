@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.HTML / CSS": {
+    "message": "HTML / CSS",
+    "description": "The label for category 'HTML / CSS' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.JavaScript": {
+    "message": "JavaScript",
+    "description": "The label for category 'JavaScript' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.React": {
+    "message": "React",
+    "description": "The label for category 'React' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Vue.js": {
+    "message": "Vue.js",
+    "description": "The label for category 'Vue.js' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Node.js": {
+    "message": "Node.js",
+    "description": "The label for category 'Node.js' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Nuxt": {
+    "message": "Nuxt",
+    "description": "The label for category 'Nuxt' in sidebar 'tutorialSidebar'"
+  }
+}

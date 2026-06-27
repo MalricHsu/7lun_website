@@ -1,5 +1,5 @@
 ---
-title: NodeJS｜ http模組實作RESTful API
+title: NodeJS｜ 原生http模組實作RESTful API
 sidebar_position: 2
 tags: [NodeJs, JavaScript, 知識點筆記]
 date: 2026-05-18
