@@ -962,15 +962,26 @@ code {
   border-bottom-color: #6f4e37 !important;
 }
 
-/* --- 手機抽屜：關於 About 之上的完整搜尋框 --- */
+/* --- 手機抽屜：關於 About 之上的搜尋框 --- */
 .navbar-drawer-search {
   padding: 0.5rem 0 1.3rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid rgba(111, 78, 55, 0.15);
 }
 
+/* wrapper 歸零撐滿，取消 ≤996px 的絕對定位（否則會偏移／歪掉） */
+.navbar-drawer-search .navbar__search {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  right: auto !important;
+}
+
 .navbar-drawer-search .navbar__search-input {
-  background-color: #fff !important;
+  box-sizing: border-box !important;
+  background-color: transparent !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236f4e37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: 0.75rem center !important;

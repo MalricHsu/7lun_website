@@ -15,10 +15,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // --- 共用：欄目小標 + 襯線標題 + 細線 ---
-function SectionKicker({ kicker, title, center = false }) {
+function SectionKicker({ kicker, title, center = false, right = false }) {
   return (
     <div
-      className={`${styles.sectionHeader} ${center ? styles.sectionHeaderCenter : ""}`}
+      className={`${styles.sectionHeader} ${center ? styles.sectionHeaderCenter : ""} ${right ? styles.sectionHeaderRight : ""}`}
     >
       <span className={styles.kicker}>{kicker}</span>
       <h2 className={styles.editorialTitle}>{title}</h2>
@@ -41,16 +41,14 @@ function AboutMe() {
               — TAIPEI, TAIWAN (R.O.C) —
             </span>
             <h1 className={styles.greeting}>7Lun</h1>
-            <h5 className={styles.subGreeting}>FRONT-END DEVELOPER</h5>
+            <h5 className={styles.subGreeting}>JUNIOR-FRONT-END DEVELOPER</h5>
             <p className={styles.description}>
-              專注於 <strong>React</strong> 與 <strong>Vue</strong>
-              前端開發，熟悉 <strong>JavaScript 生態系</strong>與
-              <strong>Vite</strong>
-              開發流程，擅長將需求拆解，轉化為清晰、易維護的程式架構。
+              專注 <strong>Vue</strong> 和 <strong>React</strong> 開發，熟悉
+              <strong>JavaScript 生態系</strong>與 <strong>Vite 流程</strong>
+              。擅長拆解需求，打造清晰易維護的架構。
               <br />
               <br />
-              這裡是我的開發篇章 —— 用「語法 Notes」整理知識， 用「部落格
-              Blog」記錄每一次踩坑與突破。
+              這裡是我寫下的開發篇章：用「Notes」沉澱知識，用「Blog」記錄踩坑與突破。
             </p>
             <div className={styles.actionButtons}>
               <Link className={styles.heroLink} to="/about">
@@ -74,16 +72,16 @@ function AboutMe() {
 function Skills() {
   const groups = [
     {
+      en: "Vue",
+      zh: "Vue 生態",
+      items: ["Vue 3", "Composition API", "Vue Router", "Nuxt 4"],
+      desc: "持續深耕 Vue 生態系與實作。",
+    },
+    {
       en: "React",
       zh: "React 生態",
       items: ["React", "React Router", "Redux Toolkit", "React Hook Form"],
       desc: "具備 SPA 專案開發經驗，熟悉元件設計與狀態管理。",
-    },
-    {
-      en: "Vue",
-      zh: "Vue 生態",
-      items: ["Vue 3", "Composition API", "Vue Router", "Nuxt 4"],
-      desc: "持續投入 Vue 生態系學習與實作。",
     },
     {
       en: "Frontend",
@@ -102,7 +100,7 @@ function Skills() {
   return (
     <section className={styles.skillsSection}>
       <div className="container">
-        <SectionKicker kicker="專業技能 ・ SKILLS" title="技能 Skill" />
+        <SectionKicker kicker="專業技能 ・ SKILLS" title="技能 Skills" />
         <div className={styles.skillStack}>
           {groups.map((g) => (
             <div key={g.en} className={styles.skillBlock}>
@@ -110,7 +108,12 @@ function Skills() {
                 <h3 className={styles.skillBlockTitle}>{g.en}</h3>
                 <span className={styles.skillBlockZh}>{g.zh}</span>
               </div>
-              <p className={styles.skillBlockNames}>{g.items.join(" ・ ")}</p>
+              <p className={styles.skillBlockNames}>
+                {/* 項目內空格改不斷行空格，避免窄螢幕在項目中間斷行留孤字 */}
+                {g.items
+                  .map((it) => it.replace(/ /g, String.fromCharCode(160)))
+                  .join(" ・ ")}
+              </p>
               <p className={styles.skillBlockDesc}>{g.desc}</p>
             </div>
           ))}
@@ -162,7 +165,7 @@ function Portfolio() {
       <div className="container">
         <SectionKicker
           kicker="團隊協作作品 ・ PORTFOLIO"
-          title="專案 Project"
+          title="專案 Projects"
         />
         <div className={styles.featureGrid}>
           {projects.map((project, idx) => (
@@ -400,11 +403,7 @@ function Testimonials() {
         `}
       </style>
       <div className="container">
-        <SectionKicker
-          kicker="合作區 ・ TESTIMONIALS"
-          title="合作與反饋 Collaboration"
-          center
-        />
+        <SectionKicker kicker="合作區 ・ TESTIMONIALS" title="反饋 Feedback" />
 
         <Swiper
           modules={[Autoplay, Pagination]}

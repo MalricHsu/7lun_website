@@ -30,11 +30,11 @@ const timelineData = [
 
 // 目前專注的技術（名稱 + 一行說明）
 const TECH_STACK = [
+  { name: "Vue 3", desc: "持續深化 Composition API 與 Nuxt 生態。" },
   {
     name: "React",
     desc: "熟悉 React Router、Redux Toolkit。",
   },
-  { name: "Vue 3", desc: "持續深化 Composition API 與 Nuxt 生態。" },
   {
     name: "Node.js",
     desc: "理解前後端協作，完成串接與部署。",
