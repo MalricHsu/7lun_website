@@ -26,10 +26,10 @@ export default function ManualIndex() {
   return (
     <>
       <div className={styles.header}>
-        <span className={styles.kicker}>語法手冊 ・ HANDBOOK</span>
-        <h1 className={styles.h1}>語法手冊</h1>
+        <span className={styles.kicker}>語法札記 ・ HANDBOOK</span>
+        <h1 className={styles.h1}>語法札記</h1>
         <div className={styles.lead}>
-          這裡記錄了我在前端開發過程中的技術積累與實戰心得。從基礎語法到框架應用，將那些踩過的坑與解法，淬鍊成隨時可查閱的知識庫。
+          從基礎語法到框架應用，把踩過的坑與解法，淬鍊成隨時可查閱的知識庫。
         </div>
       </div>
 

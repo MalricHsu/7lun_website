@@ -1,11 +1,23 @@
 /* --- 基礎設定與字體維持不變 --- */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap");
+
+/* --- 字型堆疊變數（中英混排：拉丁字母/數字優先用前者，中文由後者接手）--- */
+:root {
+  /* 標題：中英統一用思源宋 Noto Serif TC，氣質一致 */
+  --font-serif: "Noto Serif TC", serif;
+  /* 內文：英文 Inter + 中文思源黑 */
+  --font-sans: "Inter", "Noto Sans TC", sans-serif;
+  /* 程式碼：JetBrains Mono + 中文思源黑（含註解中文） */
+  --font-mono: "JetBrains Mono", "Noto Sans TC", ui-monospace, monospace;
+}
 
 :root {
   --ifm-color-primary: #6f4e37;
   --ifm-background-color: #fdfbf7;
   --ifm-navbar-background-color: #fdfbf7;
   --ifm-navbar-shadow: 0 4px 12px rgba(111, 78, 55, 0.08);
+  /* 讓 Docusaurus 預設的等寬字（行內 code、程式碼區塊）使用 JetBrains Mono */
+  --ifm-font-family-monospace: var(--font-mono);
 }
 
 /* 1. 預設狀態：咖啡色 (同時針對 a 標籤與內層文字) */
@@ -49,7 +61,7 @@ a.navbar__brand:hover .navbar__title {
   }
 
   .navbar__title {
-    font-family: "Noto Serif TC", serif !important;
+    font-family: var(--font-serif) !important;
     font-size: 1.8rem;
     color: #644632 !important;
     transition: color 0.3s ease !important; /* 加上平滑漸變，讓顏色切換更自然 */
@@ -108,10 +120,22 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Noto Serif TC", serif !important;
+  font-family: var(--font-serif) !important;
   color: #644632 !important;
   line-height: 1.2 !important;
   transition: color 0.3s ease;
+}
+
+/* 雜誌質感：標題加重字重、收緊字距，英文襯線啟用 OpenType */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 body,
@@ -119,8 +143,11 @@ p,
 li,
 span,
 .menu__link {
-  font-family: "Noto Sans TC", sans-serif !important;
+  font-family: var(--font-sans) !important;
   line-height: 1.5 !important;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* 文件內容區域行距 */
@@ -267,7 +294,7 @@ span,
 
 /* 5. 連結文字樣式 */
 .footer__link-item {
-  font-family: "Noto Sans TC", sans-serif !important;
+  font-family: var(--font-sans) !important;
   color: #6f4e37 !important;
   font-size: 0.95rem;
   text-decoration: none !important;
@@ -417,7 +444,7 @@ span,
 }
 
 .doc-created-date {
-  font-family: "Noto Sans TC", sans-serif !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.78rem;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -479,6 +506,14 @@ span,
 [class*="codeBlockContainer"] pre,
 .prism-code {
   background-color: #fbf7f0 !important;
+  font-family: var(--font-mono) !important;
+  font-variant-ligatures: contextual; /* JetBrains Mono 連字 (=> -> != 等) */
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* 行內 code 也使用等寬字型 */
+code {
+  font-family: var(--font-mono);
 }
 
 [class*="codeBlockTitle"] {
@@ -629,7 +664,7 @@ span,
 }
 
 [class*="cardTitle"] {
-  font-family: "Noto Serif TC", serif !important;
+  font-family: var(--font-serif) !important;
   color: #5d4037 !important;
   font-size: 1.2rem !important;
   margin: 0 !important;
@@ -731,7 +766,7 @@ span,
   content: "RECENT POSTS";
   display: block;
   margin-bottom: 0.3rem;
-  font-family: "Noto Sans TC", sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 2px;
@@ -747,7 +782,7 @@ span,
 
 .blog-masthead__kicker {
   display: inline-block;
-  font-family: "Noto Sans TC", sans-serif !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 3px;
@@ -781,7 +816,12 @@ span,
   border-bottom: none;
 }
 
-/* 標題：襯線暖棕 + hover */
+/* 標題：襯線暖棕 + hover；字級縮小，保持刊頭(2.6rem) > 文章項目的階層 */
+.blog-list-page article header h2 {
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
 .blog-list-page article header h2 a {
   color: #644632 !important;
 }
@@ -801,9 +841,19 @@ span,
   color: #5d4037;
 }
 
-/* 單篇文章頁主標暖棕 */
+/* 單篇文章頁主標：暖棕 + 字級對齊語法文章（2.6rem） */
 .blog-post-page article header h1 {
   color: #644632 !important;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+/* 內文閱讀寬比照語法（max 820 置中），讓兩頁三欄的中央欄一致 */
+.blog-post-page article {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 文章底部「標籤／閱讀更多」改線體（上方細線分隔） */
@@ -835,4 +885,106 @@ span,
   .blog-post-page article header h1 {
     font-size: 2rem !important;
   }
+}
+
+/* ===================== Navbar 搜尋 ===================== */
+
+/* 隱藏 Docusaurus 自動注入在選單列的搜尋（改放刊頭 NO.7 旁 / 手機抽屜） */
+.navbar__items--right [class*="navbarSearchContainer"] {
+  display: none !important;
+}
+
+/* 共用：隱藏 ⌘K 鍵盤提示徽章 */
+.navbar__search [class*="searchHint"] {
+  display: none !important;
+}
+
+/* --- 桌機：刊頭 NO.7 旁，預設只露暖棕放大鏡 icon，hover／focus 才展開 --- */
+@media (min-width: 993px) {
+  .navbar-ribbon-search {
+    position: absolute;
+    top: 2.1rem;
+    right: 6.5rem;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 滾動縮減時跟著上移，與 NO.7 對齊 */
+  .navbar--shrunk .navbar-ribbon-search {
+    top: 1.1rem;
+  }
+}
+
+/* 手機：刊頭那顆不顯示（改用抽屜內的） */
+@media (max-width: 992px) {
+  .navbar-ribbon-search {
+    display: none !important;
+  }
+}
+
+/* 刊頭搜尋輸入框：透明背景 + 自訂暖棕放大鏡，收合只露 icon */
+.navbar-ribbon-search .navbar__search-input {
+  background-color: transparent !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236f4e37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0.45rem center !important;
+  background-size: 1.05rem 1.05rem !important;
+  border: none !important;
+  border-bottom: 1px solid transparent !important;
+  border-radius: 0 !important;
+  height: 2rem !important;
+  width: 1.9rem !important; /* 只露 icon，placeholder 被推到框外看不到 */
+  padding: 0 0 0 1.9rem !important;
+  color: #6f4e37 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: width 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-ribbon-search .navbar__search-input::placeholder {
+  color: #b9a489 !important;
+  letter-spacing: 1px;
+}
+
+.navbar-ribbon-search .navbar__search-input:hover,
+.navbar-ribbon-search .navbar__search-input:focus {
+  width: 10.5rem !important;
+  border-bottom-color: rgba(111, 78, 55, 0.4) !important;
+  cursor: text;
+  outline: none !important;
+}
+
+.navbar-ribbon-search .navbar__search-input:focus {
+  border-bottom-color: #6f4e37 !important;
+}
+
+/* --- 手機抽屜：關於 About 之上的完整搜尋框 --- */
+.navbar-drawer-search {
+  padding: 0.5rem 0 1.3rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(111, 78, 55, 0.15);
+}
+
+.navbar-drawer-search .navbar__search-input {
+  background-color: #fff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236f4e37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0.75rem center !important;
+  background-size: 1.05rem 1.05rem !important;
+  border: 1px solid rgba(111, 78, 55, 0.25) !important;
+  border-radius: 4px !important;
+  height: 2.5rem !important;
+  width: 100% !important;
+  padding: 0 0.8rem 0 2.35rem !important;
+  color: #6f4e37 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.95rem !important;
+}
+
+.navbar-drawer-search .navbar__search-input::placeholder {
+  color: #b9a489 !important;
 }

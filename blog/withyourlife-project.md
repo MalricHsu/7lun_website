@@ -12,7 +12,7 @@ date: 2025-10-03
 
 - **Live Demo**：[**伴你在日常**](https://duncanin.github.io/with_your_life/)
 - **GitHub**：[**GitHub Repo**](https://github.com/Duncanin/with_your_life)
-- **使用技術**：Vite / Bootstrap 5 / SCSS / GSAP / Leaflet / Git / GitHub
+- **使用技術**：`Vite` / `Bootstrap 5` / `SCSS` / `GSAP` / `Leaflet` / `Git` / `GitHub`
 - **團隊角色**：組長 / 前端切版
 - **專案管理**：Notion / GitHub / Discord
 - **專案時程**：2025.07.01 ~ 2025.10.02

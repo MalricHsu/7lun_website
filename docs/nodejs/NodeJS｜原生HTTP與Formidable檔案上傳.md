@@ -29,7 +29,10 @@ date: 2026-06-27
   ```
 
 - 圖解
-  ![formidable解析流程](/img/node04-1.png)
+  ![formidable解析流程](/img/nodejs04-1.png)
+  ![formidable解析流程](/img/nodejs04-2.png)
+
+
 #### 2. 核心概念
 
 - formidable 的運作分兩層：

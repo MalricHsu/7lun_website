@@ -1,10 +1,10 @@
 {
   "title": {
-    "message": "Blog",
+    "message": "部落格 Blog",
     "description": "The title for the blog used in SEO"
   },
   "description": {
-    "message": "Blog",
+    "message": "7Lun 的開發筆記與專案紀錄，記錄前端路上的踩坑與突破。",
     "description": "The description for the blog used in SEO"
   },
   "sidebar.title": {

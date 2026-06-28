@@ -4,29 +4,11 @@
   min-height: 100vh;
 }
 
-/* --- 編輯風頁首 --- */
+/* --- 頁首：kicker + 關於我 --- */
 .pageHeader {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  max-width: 820px;
-  margin: 0 auto 3.5rem;
-  padding-bottom: 2rem;
+  margin: 0 0 3rem;
+  padding-bottom: 1.6rem;
   border-bottom: 3px double rgba(111, 78, 55, 0.3);
-}
-
-.introAvatar {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 6px solid #fff;
-  box-shadow: 0 16px 44px rgba(111, 78, 55, 0.15);
-  flex-shrink: 0;
-}
-
-.introContent {
-  text-align: left;
 }
 
 .kicker {
@@ -40,25 +22,111 @@
   margin-bottom: 0.8rem;
 }
 
-.introTitle {
+.pageTitle {
+  font-size: 2.6rem;
   color: #644632;
-  font-size: 2rem;
-  margin: 0 0 0.8rem;
+  margin: 0;
   letter-spacing: 0.5px;
 }
 
-.introText {
+/* --- 各區塊 --- */
+.block {
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-family: "Noto Serif TC", serif !important;
+  font-size: 1.8rem;
+  color: #644632;
+  margin: 0 0 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.openingText {
   font-size: 1.1rem;
   color: #795548;
+  line-height: 2.2;
+  margin: 0;
+}
+
+/* --- 開場 Hero：文字壓在主視覺圖左側留白 --- */
+.hero {
+  position: relative;
+  margin: 0 0 4rem;
+}
+
+.heroImg {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(111, 78, 55, 0.18);
+}
+
+.heroText {
+  margin-bottom: 1.8rem;
+}
+
+/* 桌機：文字絕對定位，壓在圖片左側留白、垂直置中 */
+@media (min-width: 997px) {
+  .heroText {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 40%;
+    margin-bottom: 0;
+  }
+}
+
+/* --- 專注技術：名稱 + 一行說明小區塊 --- */
+.techBlocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.techBlock {
+  padding: 1.6rem 1.7rem;
+  background: transparent;
+  border: 1px solid rgba(111, 78, 55, 0.3);
+  border-radius: 3px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.techBlock:hover {
+  background: #faf6ef;
+  border-color: rgba(111, 78, 55, 0.5);
+}
+
+.techName {
+  font-family: "Noto Serif TC", serif !important;
+  font-size: 1.3rem;
+  color: #644632;
+  margin: 0 0 0.6rem;
+}
+
+.techDesc {
+  font-size: 0.95rem;
+  color: #5d4037;
   line-height: 1.8;
+  margin: 0;
+}
+
+/* --- 我想做的事：結語 --- */
+.closingText {
+  font-family: "Noto Serif TC", serif !important;
+  font-size: 1.25rem;
+  color: #5d4037;
+  line-height: 2.1;
   margin: 0;
 }
 
 /* --- 編輯風故事時間軸（單欄、章節編號） --- */
 .story {
   position: relative;
-  max-width: 760px;
-  margin: 0 auto;
+  /* 寬度跟首頁/作品一致，填滿 .container */
+  margin: 0;
   padding-left: 2.6rem;
   border-left: 2px solid #e0d5c1;
 }
@@ -117,8 +185,7 @@
 
 /* --- 結尾 --- */
 .storyEnd {
-  max-width: 760px;
-  margin: 4rem auto 0;
+  margin: 4rem 0 0;
   padding-top: 2rem;
   border-top: 3px double rgba(111, 78, 55, 0.3);
   text-align: center;
@@ -130,20 +197,33 @@
 
 /* --- RWD --- */
 @media (max-width: 768px) {
-  .pageHeader {
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .pageTitle {
+    font-size: 2rem;
   }
 
-  .introContent {
-    text-align: center;
+  .sectionTitle {
+    font-size: 1.5rem;
   }
 
-  .introTitle {
-    font-size: 1.9rem;
+  .block {
+    margin-bottom: 3rem;
+  }
+
+  .hero {
+    margin-bottom: 3rem;
+  }
+
+  .heroImg {
+    border-radius: 10px;
+  }
+
+  .techBlocks {
+    grid-template-columns: 1fr;
+  }
+
+  .closingText {
+    font-size: 1.1rem;
+    line-height: 2;
   }
 
   .story {

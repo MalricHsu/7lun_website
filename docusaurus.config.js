@@ -1,13 +1,14 @@
 // @ts-check
 import { themes as prismThemes } from "prism-react-renderer";
+import { SITE_TITLE } from "./src/constants";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "記錄前端開發的生存軌跡。",
-  tagline: "",
-  favicon: "img/logo.png",
+  title: SITE_TITLE,
+  tagline: "Every project starts a new chapter.",
+  favicon: "img/logo-round.svg",
   stylesheets: [
-    "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap",
     "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css",
   ],
   clientModules: [require.resolve("./src/clientModules/scrollHandler.js")],
@@ -16,8 +17,7 @@ const config = {
     v4: true,
   },
 
-  // Vercel 部署設定
-  url: "https://7lun-website.vercel.app",
+  url: "https://www.7lunchapter.com",
   baseUrl: "/",
 
   organizationName: "MalricHsu",
@@ -46,6 +46,7 @@ const config = {
           sidebarPath: "./sidebars.js",
         },
         blog: {
+          blogTitle: "部落格 Blog",
           showReadingTime: true,
           onInlineTags: "warn",
           blogSidebarTitle: "最近文章",
@@ -59,6 +60,22 @@ const config = {
 
   plugins: [["./plugins/recent-docs", { docsDir: "docs", limit: 3 }]],
 
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import('@easyops-cn/docusaurus-search-local').PluginOptions} */
+      ({
+        hashed: true,
+        language: ["en", "zh"], // 中英斷詞
+        indexDocs: true, // 索引 語法 Notes
+        indexBlog: true, // 索引 部落格
+        indexPages: false, // 首頁/關於/作品 等自訂頁不索引
+        docsRouteBasePath: "/docs",
+        blogRouteBasePath: "/blog",
+      }),
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -68,18 +85,18 @@ const config = {
         defaultMode: "light",
       },
       navbar: {
-        title: "7lun 的程式手冊",
+        title: SITE_TITLE,
         hideOnScroll: false,
         items: [
-          { to: "/about", label: "關於7lun", position: "right" },
-          { to: "/portfolio", label: "專案作品", position: "right" },
+          { to: "/about", label: "關於 About", position: "right" },
+          { to: "/portfolio", label: "作品 Portfolio", position: "right" },
           {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "right",
-            label: "語法手冊",
+            label: "語法 Notes",
           },
-          { to: "/blog", label: "生存日誌", position: "right" },
+          { to: "/blog", label: "部落格 Blog", position: "right" },
           {
             href: "https://github.com/MalricHsu",
             position: "right",
@@ -93,14 +110,14 @@ const config = {
         links: [
           {
             items: [
-              { label: "關於7lun", to: "/about" },
-              { label: "專案作品", to: "/portfolio" },
-              { label: "語法手冊", to: "/docs/intro" },
-              { label: "生存日誌", to: "/blog" },
+              { label: "關於 About", to: "/about" },
+              { label: "作品 Portfolio", to: "/portfolio" },
+              { label: "語法 Notes", to: "/docs/intro" },
+              { label: "部落格 Blog", to: "/blog" },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} 7lun 的程式手冊.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ${SITE_TITLE}.`,
       },
       prism: {
         theme: prismThemes.github,

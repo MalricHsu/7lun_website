@@ -26,7 +26,8 @@ export default function DocItemContent({children}) {
           <Heading as="h1">{syntheticTitle}</Heading>
         </header>
       )}
-      {frontMatter.date && (
+      {/* hide_title 的頁（如語法 Notes 索引頁）有自訂刊頭，不顯示建立日期 */}
+      {frontMatter.date && !frontMatter.hide_title && (
         <div className="doc-created-date">
           建立日期 · {new Date(frontMatter.date).toISOString().split('T')[0]}
         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Content from "@theme-original/Navbar/Content";
+import SearchBar from "@theme/SearchBar";
 import styles from "./styles.module.css";
 
 // 期數固定；日期每天自動帶當天
@@ -23,6 +24,10 @@ export default function ContentWrapper(props) {
     <>
       <span className={styles.ribbonDate}>{dateStr}</span>
       <span className={styles.ribbonIssue}>{ISSUE}</span>
+      {/* 桌機：搜尋放在刊頭 NO.7 旁（樣式見 custom.css .navbar-ribbon-search） */}
+      <span className="navbar-ribbon-search">
+        <SearchBar />
+      </span>
       <Content {...props} />
     </>
   );

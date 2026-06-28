@@ -4,6 +4,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import styles from "./index.module.css";
+import { PAGE_TITLES, PAGE_DESCRIPTIONS } from "../constants";
 import authorPic from "../../static/img/author.png";
 import lifewithyou from "../../static/img/lifewithyou.png";
 import yestep from "../../static/img/yestep.png";
@@ -36,27 +37,30 @@ function AboutMe() {
             <img src={authorPic} alt="7Lun" className={styles.avatarImage} />
           </figure>
           <div className={styles.aboutText}>
-            <span className={styles.aboutKicker}>— TAIPEI, TAIWAN (R.O.C)</span>
+            <span className={styles.aboutKicker}>
+              — TAIPEI, TAIWAN (R.O.C) —
+            </span>
             <h1 className={styles.greeting}>7Lun</h1>
             <h5 className={styles.subGreeting}>FRONT-END DEVELOPER</h5>
             <p className={styles.description}>
-              專注於 <strong>React</strong> 與 <strong>Vue</strong>{" "}
-              前端開發，熟悉 JavaScript 生態系與 <strong>Vite</strong>{" "}
-              開發流程，擅長將需求拆解並轉化為清晰、易維護的程式架構。
+              專注於 <strong>React</strong> 與 <strong>Vue</strong>
+              前端開發，熟悉 <strong>JavaScript 生態系</strong>與
+              <strong>Vite</strong>
+              開發流程，擅長將需求拆解，轉化為清晰、易維護的程式架構。
               <br />
               <br />
-              這裡收錄我的技術筆記與開發日誌，用「語法手冊」整理知識，
-              用「生存日誌」記錄每一次踩坑與突破。
+              這裡是我的開發篇章 —— 用「語法 Notes」整理知識， 用「部落格
+              Blog」記錄每一次踩坑與突破。
             </p>
             <div className={styles.actionButtons}>
               <Link className={styles.heroLink} to="/about">
-                關於我 ↗
+                關於 About ↗
               </Link>
               <Link className={styles.heroLink} to="/blog">
-                生存日誌 ↗
+                部落格 Blog ↗
               </Link>
               <Link className={styles.heroLink} to="/docs/intro">
-                語法手冊 ↗
+                語法 Notes ↗
               </Link>
             </div>
           </div>
@@ -237,7 +241,7 @@ function LatestNotes() {
   return (
     <section className={styles.skillsSection}>
       <div className="container">
-        <SectionKicker kicker="本期文章 ・ CONTENTS" title="最新語法手冊" />
+        <SectionKicker kicker="本期文章 ・ CONTENTS" title="最新札記 Notes" />
 
         {recent.length === 0 ? (
           <p className={styles.contentsEmpty}>筆記整理中，敬請期待。</p>
@@ -398,7 +402,7 @@ function Testimonials() {
       <div className="container">
         <SectionKicker
           kicker="合作區 ・ TESTIMONIALS"
-          title="合作與反饋"
+          title="合作與反饋 Collaboration"
           center
         />
 
@@ -436,9 +440,8 @@ function Testimonials() {
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title="7lun 的程式手冊" description={siteConfig.tagline}>
+    <Layout title={PAGE_TITLES.home} description={PAGE_DESCRIPTIONS.home}>
       <main className={styles.mainContainer}>
         <AboutMe />
         <Skills />

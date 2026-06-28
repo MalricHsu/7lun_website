@@ -32,10 +32,10 @@ function BlogListPageMetadata(props) {
 function BlogMasthead() {
   return (
     <header className="blog-masthead">
-      <span className="blog-masthead__kicker">生存日誌 ・ JOURNAL</span>
-      <h1 className="blog-masthead__title">生存日誌</h1>
+      <span className="blog-masthead__kicker">部落格 ・ BLOG</span>
+      <h1 className="blog-masthead__title">部落格</h1>
       <p className="blog-masthead__lead">
-        記錄每一次踩坑與突破——有時是專案開發路上的關卡，有時是日常學習裡的小頓悟，都收錄在這裡。
+        記錄每一次踩坑與突破，從專案開發到日常學習，都收錄在這裡。
       </p>
     </header>
   );

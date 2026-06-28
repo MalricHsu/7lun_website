@@ -12,11 +12,11 @@ date: 2026-03-01
 
 - **Live Demo**：[**YeStep**](https://yestep.onrender.com/)
 - **GitHub**：[**GitHub Repo**](https://github.com/MalricHsu/yestep)
-- **使用技術**：Vite / React / React Router / Redux Toolkit / Bootstrap 5 / Sass / Axios / JSON Server / JavaScript / Swiper / Lottie / Chart.js / Git / GitHub
+- **使用技術**：`Vite `/ `React` / `React Router` / `Redux Toolkit` / `Bootstrap 5 `/ `Sass` / `Axios` / `JSON Server` / `JavaScript` / `Swiper` / `Lottie` / `Chart.js` / `Git` / `GitHub`
 - **團隊角色**：組長 / 前端開發(React) / API 模擬與部署(JSON Server)
 - **專案管理**：Notion / GitHub / Discord
 - **專案時程**：2025.10.15 ~ 2026.02.28
-- **網站部署**：OnRender
+- **網站部署**：Render
 
 {/* truncate */}
 
