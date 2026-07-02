@@ -142,6 +142,9 @@ export default function PortfolioPage() {
     },
   ];
 
+  // 後端小工具（之後新增：依上方格式填入物件即可）
+  const backendTools = [];
+
   return (
     <Layout
       title={PAGE_TITLES.portfolio}
@@ -173,6 +176,19 @@ export default function PortfolioPage() {
             ) : (
               <div className={styles.featureGrid}>
                 {personalProjects.map((project, idx) => (
+                  <ProjectCard key={idx} project={project} />
+                ))}
+              </div>
+            )}
+          </section>
+
+          <section className={styles.portfolioGroup}>
+            <SectionKicker kicker="後端工具 ・ BACKEND" title="後端工具" />
+            {backendTools.length === 0 ? (
+              <p className={styles.contentsEmpty}>後端小工具準備中，敬請期待。</p>
+            ) : (
+              <div className={styles.featureGrid}>
+                {backendTools.map((project, idx) => (
                   <ProjectCard key={idx} project={project} />
                 ))}
               </div>
