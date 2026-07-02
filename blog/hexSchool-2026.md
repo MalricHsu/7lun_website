@@ -19,6 +19,8 @@ date: 2026-06-24
 - **使用技術**：`Nuxt 4` / `Vue 3` / `@nuxt/content` / `Pinia` / `Bootstrap 5` / `Sass` / `Zod` / `Axios` / `Swiper`
 - **專案時程**：2026.06.15 ~ 2026.06.24
 - **網站部署**：Vercel
+- **Figma**：[**Nelson Blog**](https://www.figma.com/design/p9J0EAASQNwGpiz7NuJaxi/2026ver.-%E9%AB%94%E9%A9%97%E7%87%9F%E8%A8%AD%E8%A8%88%E7%A8%BF--%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%B7%A8%E8%BC%AF%E6%AA%94-?node-id=11107-13718&t=YSZRe5AUo1xIuvek-1)
+
 
 {/* truncate */}
 

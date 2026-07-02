@@ -119,6 +119,27 @@ export default function PortfolioPage() {
       github: "https://github.com/MalricHsu/hex-blog",
       demo: "https://hex-blog-nu.vercel.app/",
     },
+    {
+      title: "URBNSTEP 運動鞋電商網站",
+      category: "電商主題",
+      desc: "將手刻切版作品重做成 Vue SPA 版本，補上會員登入、商品 API、收藏清單同步等功能，讓它從「看起來像電商」變成「真的有基本互動流程」的前端專案。",
+      link: "/blog/hexSchool-URBNSTEP",
+      img: require("@site/static/img/URBNSTEP.png").default,
+      tags: [
+        "Vue 3",
+        "Composition API",
+        "Vite",
+        "Vue Router",
+        "Pinia",
+        "axios",
+        "js-cookie",
+        "SCSS",
+        "Bootstrap Icons",
+        "Swiper",
+      ],
+      github: "https://github.com/MalricHsu/urbnstep",
+      demo: "https://urbnstep.vercel.app/",
+    },
   ];
 
   return (
