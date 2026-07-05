@@ -1,8 +1,8 @@
 ---
-title: NodeJS｜ Express 入門
+title: NodeJS｜ Express 概念及用法
 sidebar_position: 5
 tags: [NodeJs, JavaScript, 知識點筆記]
-date: 2026-07-01
+date: 2026-07-05
 ---
 
 
@@ -395,131 +395,267 @@ URL 只放名詞（資源），動作交給 HTTP 方法表達。避免寫成 `/g
     **好處**：路由檔案不需要知道自己被掛在哪個前綴下。日後若要把 `/members` 改成 `/api/v1/members`，只需要改 `app.js` 那一行 `app.use('/members', ...)`，路由檔案完全不用動——這正是 `app.use()` 前綴比對特性帶來的彈性。
   :::
 
-### 五、綜合實戰：完整 CRUD + 資料驗證
 
-把前四節的內容全部串起來，完成一支具備資料驗證的完整 API。尚未接資料庫前，先用 JavaScript 陣列做 in-memory 儲存（重啟伺服器資料會清空，適合練邏輯）。
+### 五、綜合實戰：健身房會員管理 API
 
-#### 1. Helper 函式：把重複邏輯抽出來
+#### 5.1 專案結構總覽
 
-  ```javascript
-  // 以 id 搜尋資料,找不到回傳 undefined
-  function findById(list, id) {
-    return list.find(item => item.id === Number(id));
-  }
+```text
+node-js-week3-2026/
+├── app.js                          # 組裝 app：掛 middleware + 掛 router，最後 export（不啟動）
+├── server.js                       # 啟動點：require app 後才 app.listen()
+├── routes/
+│   ├── members.js                  # 會員 CRUD（GET / POST / PUT / DELETE）
+│   └── uploadImage.js              # 圖片上傳（formidable 解析 multipart）
+├── fixtures/
+│   ├── members.json                # 4 筆初始會員資料
+│   ├── sample.jpg                  # 測試用圖片
+│   └── swagger.json                # Swagger API 文件
+├── .env.example           # 環境變數範例
+└── package.json
+```
 
-  // 驗證必填欄位是否齊全,回傳缺少的欄位陣列
-  function validateFields(body, requiredFields) {
-    return requiredFields.filter(field => !body[field]);
-  }
+- **初始資料 `fixtures/members.json`：**
+
+  ```json
+  [
+    { "id": 1, "name": "小華", "level": "VIP" },
+    { "id": 2, "name": "小美", "level": "normal" },
+    { "id": 3, "name": "阿強", "level": "VIP" },
+    { "id": 4, "name": "小明", "level": "normal" }
+  ]
   ```
 
-#### 2. 完整範例（以 courses 為例）
+#### 2. 把 app 跟 server 分開
+
+- **`app.js`** 只負責「組裝」——掛 middleware、掛 router，然後 `module.exports = app`，**它自己不呼叫 `app.listen()`**
+- **真正的啟動 `app.listen(PORT)` 放在 `server.js`。**
+
+#### 3. 任務一：初始化 state + helper 函式（`routes/members.js` 開頭）
+
+- 尚未接資料庫前，用 JavaScript 陣列做 in-memory 儲存。把「篩選」「驗證」兩段重複邏輯抽成 helper，讓後面的路由 handler 保持乾淨：
 
   ```javascript
-  // routes/courses.js
-  const express = require('express');
+  const express = require("express");
+  const initialMembers = require("../fixtures/members.json");
+
+  // 複製一份初始資料，不直接改動被 require 進來的外部陣列
+  const members = [...initialMembers];
+  let nextId = 5; // 初始有 4 筆(id 1~4)，下一個新增從 5 開始
+
+  // helper：依 query.level 篩選；沒帶 level 就回全部
+  const filterByQuery = (list, query) => {
+    if (!query.level) return list;
+    return list.filter((item) => item.level === query.level);
+  };
+
+  // helper：驗證 body 有沒有 name、level；能擋 null / undefined / {}
+  const validateBody = (body) => {
+    if (!body || !body.name || !body.level) {
+      return { valid: false, error: "缺 Name 或 Level" };
+    }
+    return { valid: true };
+  };
+
+  const router = express.Router();
+  ```
+
+  :::note
+  為什麼要 `const members = [...initialMembers]`（複製一份）而不是直接用 `initialMembers`？因為 `require` 進來的 JSON 是共用的模組快取，**直接對它 `push`／`splice` 會污染到原始資料**，所以要複製一份才能安全地增刪改。
+  :::
+
+#### 4. 任務二：GET 讀取（列表 + 單筆）
+
+    ```javascript
+    // GET /members  → 200 + 會員陣列（可用 ?level=VIP 篩選）
+    router.get("/", (req, res) => {
+      const filterMembers = filterByQuery(members, req.query); // 用到 req.query
+      return res.status(200).json(filterMembers);
+    });
+
+    // GET /members/:id  → 200 + 單一會員，或 404
+    router.get("/:id", (req, res) => {
+      const { id } = req.params;                                // 用到 req.params
+      const findMember = members.find((item) => item.id === Number(id)); // 記得 Number() 轉型
+      if (!findMember) {
+        return res.status(404).json({ error: "會員不存在" });
+      }
+      return res.status(200).json(findMember);
+    });
+    ```
+    
+  :::note
+  這裡剛好把第二節的 `req.query`（篩選，選填）跟 `req.params`（找特定一筆，必要）兩個觀念都用上了。
+  :::
+
+#### 5. 任務三：POST 新增（含驗證）
+
+```javascript
+// POST /members  → 201 + 新會員，或 400（驗證失敗）
+router.post("/", (req, res) => {
+  const body = req.body;                       // 靠 express.json() 才有值
+  const validateMember = validateBody(body);
+  if (!validateMember.valid) {
+    return res.status(400).json({ error: validateMember.error });
+  }
+  const newMember = {
+    id: nextId,
+    name: String(body.name),                   // 防禦性轉型，避免傳進非字串
+    level: String(body.level),
+  };
+  members.push(newMember);
+  nextId++;                                    // id 用掉了才遞增
+  return res.status(201).json(newMember);
+});
+```
+
+#### 6. 任務四：PUT 更新 + DELETE 刪除
+
+```javascript
+// PUT /members/:id  → 200 + merge 後的會員，或 404
+router.put("/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const memberIndex = members.findIndex((item) => item.id === id);
+  if (memberIndex === -1) {
+    return res.status(404).json({ error: "會員不存在" });
+  }
+  // spread 合併：req.body 放後面，用來覆蓋舊欄位
+  // 例：PUT /members/1 body { level: 'normal' } → name 會被保留，只有 level 被更新
+  members[memberIndex] = {
+    ...members[memberIndex],
+    ...req.body,
+  };
+  return res.status(200).json(members[memberIndex]);
+});
+
+// DELETE /members/:id  → 204 無 body，或 404
+router.delete("/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const memberIndex = members.findIndex((item) => item.id === id);
+  if (memberIndex === -1) {
+    return res.status(404).json({ error: "會員不存在" });
+  }
+  members.splice(memberIndex, 1);
+  return res.status(204).end();                // 204 不帶 body，用 .end() 結束
+});
+
+module.exports = router;
+```
+:::tip
+PUT 用 `...members[memberIndex]` 在前、`...req.body` 在後，這個順序就是「部分更新（partial update）」的關鍵：舊資料先鋪底，新資料只覆蓋有傳的欄位，沒傳的欄位（例如 `name`）自動保留。
+:::
+
+#### 7. 任務五：POST /uploadImage 圖片上傳
+
+- `express.json()` 只能解析 JSON，遇到檔案上傳的 `multipart/form-data` 需要另外的套件（這裡用 `formidable`）：
+
+  ```javascript
+  const express = require("express");
+  const fs = require("node:fs");
+  const { formidable } = require("formidable");
+
+  const uploadDir = process.env.UPLOAD_DIR || "/tmp/uploads";
+  const maxFileSize = (Number(process.env.MAX_FILE_SIZE_MB) || 5) * 1024 * 1024;
+
+  fs.mkdirSync(uploadDir, { recursive: true }); // 確保上傳目錄存在
+
   const router = express.Router();
 
-  let courses = [
-    { id: 1, name: '瑜伽入門', price: 1200 },
-    { id: 2, name: '重訓基礎', price: 1500 },
-  ];
-  let nextId = 3;
-
-  function findById(list, id) {
-    return list.find(item => item.id === Number(id));
-  }
-  function validateFields(body, requiredFields) {
-    return requiredFields.filter(field => !body[field]);
-  }
-
-  router.get('/', (req, res) => {
-    res.status(200).json({ status: 'success', data: courses });
-  });
-
-  router.get('/:id', (req, res) => {
-    const course = findById(courses, req.params.id);
-    if (!course) {
-      return res.status(404).json({ status: 'error', message: '找不到此課程' });
-    }
-    res.status(200).json({ status: 'success', data: course });
-  });
-
-  router.post('/', (req, res) => {
-    const missingFields = validateFields(req.body, ['name', 'price']);
-    if (missingFields.length > 0) {
-      return res.status(400).json({ status: 'error', message: `缺少必填欄位：${missingFields.join(', ')}` });
-    }
-    const newCourse = { id: nextId++, name: req.body.name, price: req.body.price };
-    courses.push(newCourse);
-    res.status(201).json({ status: 'success', data: newCourse });
-  });
-
-  router.put('/:id', (req, res) => {
-    const course = findById(courses, req.params.id);
-    if (!course) {
-      return res.status(404).json({ status: 'error', message: '找不到此課程' });
-    }
-    const missingFields = validateFields(req.body, ['name', 'price']);
-    if (missingFields.length > 0) {
-      return res.status(400).json({ status: 'error', message: `缺少必填欄位：${missingFields.join(', ')}` });
-    }
-    course.name = req.body.name;
-    course.price = req.body.price;
-    res.status(200).json({ status: 'success', data: course });
-  });
-
-  router.delete('/:id', (req, res) => {
-    const index = courses.findIndex(item => item.id === Number(req.params.id));
-    if (index === -1) {
-      return res.status(404).json({ status: 'error', message: '找不到此課程' });
-    }
-    courses.splice(index, 1);
-    res.status(204).end();
+  router.post("/", (req, res) => {
+    const form = formidable({ uploadDir, maxFileSize, keepExtensions: true });
+    form.parse(req, (error, field, files) => {
+      if (error) {
+        return res.status(500).json({ error: error.message });
+      }
+      if (!files || !files.image) {
+        return res.status(400).json({ error: "No file uploaded" });
+      }
+      // 注意：formidable v3 的 files.image 是陣列，要判斷後取 [0]
+      let file = files.image;
+      if (Array.isArray(file)) {
+        file = file[0];
+      }
+      return res.status(200).json({
+        filename: file.originalFilename,
+        sizeKB: Math.round(file.size / 1024),
+        savedPath: file.filepath,
+      });
+    });
   });
 
   module.exports = router;
   ```
 
+#### 8. 任務六：`app.js` 組裝（middleware 順序是重點）
+
+```javascript
+const express = require("express");
+const cors = require("cors");
+const swaggerUi = require("swagger-ui-express");
+
+const membersRouter = require("./routes/members");
+const uploadImageRouter = require("./routes/uploadImage");
+const swaggerDoc = require("./fixtures/swagger.json");
+
+const app = express();
+
+// 順序很重要：middleware 一定要在 router 之前
+app.use(cors());                 // 1. 解跨域
+app.use(express.json());          // 2. 解析 JSON body（否則 req.body 是 undefined）
+app.use("/members", membersRouter);        // 3. 掛會員路由
+app.use("/uploadImage", uploadImageRouter); // 4. 掛上傳路由
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc)); // 5. Swagger 文件頁
+
+// 注意：這裡不呼叫 app.listen()，交給 server.js
+module.exports = app;
+```
+
+- 對應的 `server.js`（啟動點）：
+
   ```javascript
-  // app.js
-  const express = require('express');
-  const cors = require('cors');
-  const coursesRouter = require('./routes/courses');
+  require("dotenv").config();
+  const app = require("./app");
 
-  const app = express();
-  app.use(cors());
-  app.use(express.json());
-  app.use('/courses', coursesRouter);
-
-  app.listen(3000, () => console.log('伺服器啟動中：http://localhost:3000'));
+  const PORT = Number(process.env.PORT) || 3000;
+  app.listen(PORT, () => {
+    console.log(`✅ Server listening on http://localhost:${PORT}`);
+    console.log(`📘 Swagger UI: http://localhost:${PORT}/docs`);
+  });
   ```
 
-#### 3. CRUD 各方法對應狀態碼速查
+  :::info
+  呼應第四節：`cors()` 跟 `express.json()` 這兩個 middleware 為什麼一定要放在路由前面？因為 Express 是「照掛載順序」依序執行清單的，如果 `express.json()` 掛在路由後面，請求跑到路由 handler 時 `req.body` 都還沒被解析好，就會是 `undefined`。
+  :::
 
-| 方法 | 情境 | 成功狀態碼 | 失敗狀態碼 |
+#### 9. CRUD + 上傳 各方法對應狀態碼速查
+
+| 方法與路徑 | 情境 | 成功狀態碼 | 失敗狀態碼 |
 | --- | --- | --- | --- |
-| `GET /` | 取得列表 | 200 | — |
-| `GET /:id` | 取得單筆 | 200 | 404（找不到） |
-| `POST /` | 新增 | 201 | 400（欄位缺失） |
-| `PUT /:id` | 更新 | 200 | 404 / 400 |
-| `DELETE /:id` | 刪除 | 204 | 404（找不到） |
+| `GET /members` | 取得列表(可篩選) | 200 | — |
+| `GET /members/:id` | 取得單筆 | 200 | 404(會員不存在) |
+| `POST /members` | 新增 | 201 | 400(缺 name/level) |
+| `PUT /members/:id` | 部分更新 | 200 | 404(會員不存在) |
+| `DELETE /members/:id` | 刪除 | 204(無 body) | 404(會員不存在) |
+| `POST /uploadImage` | 上傳圖片 | 200 | 400(沒帶檔案) / 500(解析錯誤) |
 
 
-### 六、資料來源
+## 資料來源
 
+**課程原始講義**
 
-- [Express 框架入門](https://hackmd.io/hmdYIyjOQ_uXvxjmjXj59g?view)
-- [網址規則、req.params 與 req.query](https://hackmd.io/efl34vvNRUahl-zs5andDQ?view)
-- [Middleware 概念與應用](https://hackmd.io/8Nbuef24QLeW2Uy68MTZxw?view)
-- [Router 拆分與模組化](https://hackmd.io/8h-HH5WvSeClpuzKCLtFFA?view)
-- [CRUD 實作與資料驗證](https://hackmd.io/gMFdvWuCRR21CWDcQI5rSw?view)
+- [Day 7 - Express 框架入門](https://hackmd.io/hmdYIyjOQ_uXvxjmjXj59g?view)
+- [Day 8 - 網址規則、req.params 與 req.query](https://hackmd.io/efl34vvNRUahl-zs5andDQ?view)
+- [Day 9 - Middleware 概念與應用](https://hackmd.io/8Nbuef24QLeW2Uy68MTZxw?view)
+- [Day 10 - Router 拆分與模組化](https://hackmd.io/8h-HH5WvSeClpuzKCLtFFA?view)
+- [Day 11 - CRUD 實作與資料驗證](https://hackmd.io/gMFdvWuCRR21CWDcQI5rSw?view)
+- [第三週作業 repo — 健身房會員管理 API](https://github.com/MalricHsu/node-js-week3-2026)
 
+**補充查證資料**
 
 - [Express 官方文件 — Routing](https://expressjs.com/en/guide/routing/)
 - [Express 官方文件 — Using middleware](https://expressjs.com/en/guide/using-middleware/)
 - [MDN — HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-- [MDN — Cross-Origin Resource Sharing （CORS）](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
+- [MDN — Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
 - [MDN — Same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
-- [cors（npm 套件文件）](https://www.npmjs.com/package/cors)
+- [cors — npm 套件文件](https://www.npmjs.com/package/cors)
 - [RESTful API 資源命名慣例](https://restfulapi.net/resource-naming/)
