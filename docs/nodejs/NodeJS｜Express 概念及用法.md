@@ -2,7 +2,7 @@
 title: NodeJS｜ Express 概念及用法
 sidebar_position: 5
 tags: [NodeJs, JavaScript, 知識點筆記]
-date: 2026-07-05
+date: 2026-07-03
 ---
 
 
@@ -398,7 +398,7 @@ URL 只放名詞（資源），動作交給 HTTP 方法表達。避免寫成 `/g
 
 ### 五、綜合實戰：健身房會員管理 API
 
-#### 5.1 專案結構總覽
+#### 1. 專案結構總覽
 
 ```text
 node-js-week3-2026/
