@@ -3,6 +3,7 @@ title: CSS｜Background 使用方法
 sidebar_position: 2
 tags: [CSS, 知識點筆記]
 date: 2025-06-11
+slug: /docs/html-css/css-background
 ---
 
 ### 一、背景語法

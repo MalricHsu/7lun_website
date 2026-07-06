@@ -3,6 +3,7 @@ title: NodeJS｜Bcrypt、JWT 與 Middleware 身份驗證機制
 sidebar_position: 6
 tags: [NodeJs, JavaScript, 知識點筆記]
 date: 2026-07-06
+slug: /docs/nodejs/nodejs-bcrypt-jwt-middleware
 ---
 
 ### 一、Bcrypt 雜湊密碼
@@ -507,7 +508,7 @@ module.exports = app; // 不呼叫 app.listen()，交給 server.js
 ```
 
 
-## 資料來源
+### 六、資料來源
 
 **課程原始講義**
 - [Day 12 - 密碼安全與 bcrypt](https://hackmd.io/HnJobkdXSbiizaN1qufu-A?view)

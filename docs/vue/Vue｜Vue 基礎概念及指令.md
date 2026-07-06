@@ -3,6 +3,7 @@ title: Vue｜Vue 基礎概念及指令
 sidebar_position: 2
 tags: [Vue , "知識點筆記"]
 date: 2026-04-21
+slug: /docs/vue/vue-basics-and-directives
 ---
 
 ### 一、基本指令

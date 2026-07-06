@@ -3,6 +3,7 @@ title: NodeJS｜全域物件與執行環境
 sidebar_position: 1
 tags: [NodeJs, JavaScript, 知識點筆記]
 date: 2026-05-02
+slug: /docs/nodejs/nodejs-global-objects-and-runtime
 ---
 
 ### 一、核心定義與環境

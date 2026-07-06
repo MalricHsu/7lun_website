@@ -3,6 +3,7 @@ title: CSS｜Font 字體介紹
 sidebar_position: 3
 tags: [CSS, 知識點筆記]
 date: 2025-06-11
+slug: /docs/html-css/css-font
 ---
 
 ### 一、系統字體介紹

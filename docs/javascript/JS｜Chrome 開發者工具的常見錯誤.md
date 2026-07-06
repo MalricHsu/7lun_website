@@ -3,6 +3,7 @@ title: JS｜Chrome 開發者工具的常見錯誤
 sidebar_position: 3
 tags: [JavaScript, 知識點筆記]
 date: 2025-09-28
+slug: /docs/javascript/js-chrome-devtools-errors
 ---
 
 ### 一、Chrome 開發者工具的常見錯誤排解

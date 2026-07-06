@@ -3,6 +3,7 @@ title: Vue｜Vue 介紹
 sidebar_position: 1
 tags: [Vue]
 date: 2026-04-15
+slug: /docs/vue/vue-introduction
 ---
 
 ### 一、Vue 是什麼？

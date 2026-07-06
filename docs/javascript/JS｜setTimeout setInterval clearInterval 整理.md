@@ -3,6 +3,7 @@ title: JS｜setTimeout setInterval clearInterval 整理
 sidebar_position: 15
 tags: [JavaScript, 知識點筆記]
 date: 2026-04-26
+slug: /docs/javascript/js-settimeout-setinterval
 ---
 
 ### 一、setTimeout / setInterval  / clearInterval

@@ -3,6 +3,7 @@ title: CSS｜響應式導覽列轉換
 sidebar_position: 19
 tags: [CSS, 知識點筆記]
 date: 2026-05-17
+slug: /docs/html-css/css-responsive-navbar
 ---
 
 ### 一、前言

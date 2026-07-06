@@ -3,6 +3,7 @@ title: 02｜ JavaScript 流程判斷與控制
 sidebar_position: 2
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-09-26
+slug: /docs/javascript/js-control-flow
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/528970238a6948a6b78cb0006a17ef04)

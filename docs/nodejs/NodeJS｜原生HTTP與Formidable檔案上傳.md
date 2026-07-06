@@ -3,6 +3,7 @@ title: NodeJS｜ 原生HTTP與Formidable檔案上傳
 sidebar_position: 4
 tags: [NodeJs, JavaScript, 知識點筆記]
 date: 2026-06-27
+slug: /docs/nodejs/nodejs-http-formidable-upload
 ---
 
 :::warning

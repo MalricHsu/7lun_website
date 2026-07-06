@@ -3,6 +3,7 @@ title: 04｜ JavaScript 函式設計
 sidebar_position: 5
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-10-03
+slug: /docs/javascript/js-function-design
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/16977469126b416598ade83af8d9df17)

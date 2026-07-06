@@ -3,6 +3,7 @@ title: JS｜JavaScript 四種迴圈比較
 sidebar_position: 14
 tags: [JavaScript, 知識點筆記]
 date: 2026-04-26
+slug: /docs/javascript/js-loop-comparison
 ---
 
 ### 前言、迴圈

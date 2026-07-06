@@ -3,6 +3,7 @@ title: 05｜ JavaScript DOM 文件物件模型介紹
 sidebar_position: 6
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-10-08
+slug: /docs/javascript/js-dom-introduction
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/3f479ce9e35f40869a9962b7b803f38e)

@@ -3,6 +3,7 @@ title: 07｜ JavaScript 第三方套件整合
 sidebar_position: 8
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-10-24
+slug: /docs/javascript/js-third-party-packages
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/JS-d0e3ec63b81a41d3838e52eb9db79266)
