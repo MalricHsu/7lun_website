@@ -507,15 +507,20 @@ module.exports = app; // 不呼叫 app.listen()，交給 server.js
 ```
 
 
-### 六、參考資料
+## 資料來源
 
-- HackMD「助教天團」課程講義：Day 12 密碼安全與 bcrypt、Day 13 JWT 概念與簽發、Day 14 JWT 驗證與自訂 Middleware、Day 15 Middleware 三種類型
-- HackMD「六角學院」課程講義：Week 4 — Node.js 進階操作（Cookie / Header / Axios，含 middleware 深入與 bcrypt/JWT 整合實戰）
-- [hexschool/node-js-week4-2026](https://github.com/hexschool/node-js-week4-2026)：官方 Week 4 作業骨架 repo（README 任務規格、Swagger 文件、16 項 Jest 測試）
-- [MalricHsu/node-js-week4-2026](https://github.com/MalricHsu/node-js-week4-2026)：本筆記第五節程式碼的實際來源（已完成 5 個任務的版本）
-- [bcrypt - npm](https://www.npmjs.com/package/bcrypt)：cost factor 與 API 官方說明
-- [jsonwebtoken - npm](https://www.npmjs.com/package/jsonwebtoken)：`sign` / `verify` 參數與錯誤類型（TokenExpiredError、JsonWebTokenError）
-- [JWT.io](https://jwt.io/)：可互動解析 JWT 三段結構的官方工具
-- [Express 官方文件 - Error Handling](https://expressjs.com/en/guide/error-handling.html)：`next(err)` 機制與四參數錯誤處理器
-- [Express 官方文件 - Using middleware](https://expressjs.com/en/guide/using-middleware.html)：middleware 類型與掛載順序
-- [MDN - HTTP 狀態碼](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status)：401 與 403 的語意區別
+**課程原始講義**
+- [Day 12 - 密碼安全與 bcrypt](https://hackmd.io/HnJobkdXSbiizaN1qufu-A?view)
+- [Day 13 - JWT 概念與簽發](https://hackmd.io/gI-k28j2RJWxQgGPCrwvpg?view)
+- [Day 14 - JWT 驗證與自訂 Middleware](https://hackmd.io/QEFjZzKARr6OW6aS_F9AcA?view)
+- [Day 15 - Middleware 三種類型](https://hackmd.io/vJ5gim84Sv2LXdInP1Xe-w?view)
+- [Week 4：Node.js 進階操作（Cookie / Header / Axios）](https://hackmd.io/xROAPlhZR7qyMLDBpGyNsQ?view)
+- [第四週作業](https://github.com/hexschool/node-js-week4-2026)
+
+**補充查證資料**
+- [bcrypt - npm](https://www.npmjs.com/package/bcrypt)
+- [jsonwebtoken - npm](https://www.npmjs.com/package/jsonwebtoken)
+- [JWT.io — 互動解析 JWT 結構](https://jwt.io/)
+- [Express 官方文件 — Error Handling](https://expressjs.com/en/guide/error-handling.html)
+- [Express 官方文件 — Using middleware](https://expressjs.com/en/guide/using-middleware.html)
+- [MDN — HTTP 狀態碼](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status)
