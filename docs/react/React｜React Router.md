@@ -472,3 +472,180 @@ export default function AlbumSearch() {
     <RouterProvider router={router} />
   );
   ```
+
+  ### 九、進階應用：前台／後台雙 Layout
+ 
+  #### 1. 情境與正確做法
+ 
+  - **情境：** 專案通常會同時有「前台」（一般使用者逛的頁面，例如首頁、步道列表）跟「後台」（管理者用的頁面，例如步道管理、會員管理）。這兩塊的導覽列、版面配置、甚至驗證邏輯通常完全不同。
+  - **常見的錯誤做法：** 全部頁面共用同一個 `App.jsx` Layout，再用 `if (location.pathname.startsWith('/admin'))` 這種判斷式去切換要顯示哪個導覽列，條件會越疊越多。
+  - **正確做法：** React Router 官方把「本身沒有實際內容、只負責提供共用外觀的父層路由」稱為 **Layout Route**（對應地，「沒有 path、直接繼承父層網址」的子路由叫 **Index Route**）。前台跟後台各自建立一個 Layout Route，底下再掛各自的 `children`，這跟前面「相框」的巢狀路由概念完全一樣，只是套用在整個網站的最外層，前台跟後台**分屬兩個不同的相框**，彼此不共用。
+
+  #### 2. Step 1：建立兩個 Layout 元件（各自的 Outlet 母版）
+ 
+  - `layouts/FrontLayout.jsx`（前台外觀）：
+    ```jsx
+    import { Outlet, Link } from "react-router-dom";
+  
+    function FrontLayout() {
+      return (
+        <div className="front-layout">
+          <header className="front-header">
+            <Link to="/">首頁</Link>
+            <Link to="/trails">步道列表</Link>
+          </header>
+  
+          <main>
+            {/* 前台各頁面會渲染在這裡 */}
+            <Outlet />
+          </main>
+  
+          <footer>© 2026 我的步道網站</footer>
+        </div>
+      );
+    }
+  
+    export default FrontLayout;
+    ```
+ 
+  - `layouts/AdminLayout.jsx`（後台外觀）：
+    ```jsx
+    import { Outlet, NavLink } from "react-router-dom";
+  
+    function AdminLayout() {
+      return (
+        <div className="admin-layout">
+          <aside className="admin-sidebar">
+            <NavLink to="/admin/dashboard">儀表板</NavLink>
+            <NavLink to="/admin/trails">步道管理</NavLink>
+            <NavLink to="/admin/members">會員管理</NavLink>
+          </aside>
+  
+          <main className="admin-content">
+            {/* 後台各頁面會渲染在這裡 */}
+            <Outlet />
+          </main>
+        </div>
+      );
+    }
+  
+    export default AdminLayout;
+    ```
+ 
+  #### 3. Step 2：`router.js` 把兩個 Layout 各自掛成最上層
+ 
+  ```jsx
+  // router.js
+  import { createHashRouter, Navigate } from "react-router-dom";
+  import FrontLayout from "./layouts/FrontLayout";
+  import AdminLayout from "./layouts/AdminLayout";
+  import Home from "./pages/Home";
+  import TrailList from "./pages/TrailList";
+  import Dashboard from "./pages/admin/Dashboard";
+  import AdminTrails from "./pages/admin/AdminTrails";
+  import AdminMembers from "./pages/admin/AdminMembers";
+  import NotFound from "./pages/NotFound";
+ 
+  const router = createHashRouter([
+    {
+      path: "/",
+      element: <FrontLayout />, // 前台外觀
+      children: [
+        { index: true, element: <Home /> },
+        { path: "trails", element: <TrailList /> },
+      ],
+    },
+    {
+      path: "/admin",
+      element: <AdminLayout />, // 後台外觀
+      children: [
+        // 進 /admin 自動導向 /admin/dashboard
+        { index: true, element: <Navigate to="dashboard" replace /> },
+        { path: "dashboard", element: <Dashboard /> },
+        { path: "trails", element: <AdminTrails /> },
+        { path: "members", element: <AdminMembers /> },
+      ],
+    },
+    {
+      // 404 一定要放最後
+      path: "*",
+      element: <NotFound />,
+    },
+  ]);
+ 
+  export default router;
+  ```
+ 
+  :::note
+  - **跟前台／後台的 Vue Router 版本對照：** 概念完全一樣（父層路由對應一個 Layout 元件，底下掛 `children`），差別只在 React Router 用 `<Outlet />` 取代 Vue 的 `<RouterView />`。
+  :::
+  #### 4. Step 3：後台加上登入驗證
+ 
+  - React Router **沒有**像 Vue Router 那樣的全域 `beforeEach` 守衛，官方建議的作法是：寫一個「本身不畫任何畫面、只負責判斷通不通過」的元件，通過就渲染 `<Outlet />` 放行，不通過就用 `<Navigate>` 導去登入頁——這其實也是一種 Layout Route，只是它的「外觀」是空的。
+  - `components/RequireAuth.jsx`：
+
+    ```jsx
+    import { Navigate, Outlet, useLocation } from "react-router-dom";
+  
+    function RequireAuth() {
+      const location = useLocation();
+      const token = localStorage.getItem("token");
+  
+      if (!token) {
+        // 沒登入：導去登入頁，並用 state 記住原本要去哪，登入後可以導回來
+        return <Navigate to="/admin/login" replace state={{ from: location }} />;
+      }
+  
+      // 有登入：放行，渲染底下實際掛的子路由
+      return <Outlet />;
+    }
+  
+    export default RequireAuth;
+    ```
+ 
+  - 把它疊在 `AdminLayout` 外面（Layout Route 可以像這樣一層包一層）：
+    ```jsx
+    // router.js（節錄）
+    {
+      path: "/admin",
+      element: <RequireAuth />, // 第一層：先檢查有沒有登入
+      children: [
+        {
+          element: <AdminLayout />, // 第二層：通過驗證才會渲染後台外觀
+          children: [
+            { index: true, element: <Navigate to="dashboard" replace /> },
+            { path: "dashboard", element: <Dashboard /> },
+            { path: "trails", element: <AdminTrails /> },
+            { path: "members", element: <AdminMembers /> },
+          ],
+        },
+        // /admin/login 放在 RequireAuth 檢查之外，否則使用者連登入頁都進不去
+        { path: "login", element: <AdminLogin /> },
+      ],
+    }
+    ```
+ 
+    :::warning
+    - 在這個寫法中，`/admin/login` 雖然被放在 `/admin` 的 `children` 裡，但實際上它不應該被 `RequireAuth` 擋住。
+    - 常見做法有兩種：
+      1. 在 `RequireAuth` 裡另外判斷目前路徑是否為登入頁，若是 `/admin/login` 就直接放行。
+      2. 將登入頁移到 `/admin` 父層之外，例如改成 `/admin-login`。
+
+    這裡把登入頁放在 `children` 中，主要是為了示範 Layout Route 可以多層嵌套。實務開發時，還是要依照專案需求調整路由結構，避免使用者在未登入狀態下被重複導向，造成無窮迴圈。
+    :::
+
+    :::note
+      - 登入成功後，也可以導回使用者原本想進入的頁面。
+      - 做法是在 `AdminLogin.jsx` 中使用 `useLocation()` 讀取 `RequireAuth` 傳進來的 `state.from`，登入成功後再執行：
+        ```jsx
+        navigate(from?.pathname || '/admin/dashboard', { replace: true })
+        ```
+      - 這樣如果使用者原本是想進入後台某個頁面，登入後就會回到原本的目標頁面；如果沒有來源頁面，則預設導向 `/admin/dashboard`。
+    :::
+  
+
+  ### 十、參考資源
+ 
+  - [React Router 官方文件](https://reactrouter.com/)
+  - [React Router — Main Concepts（Index Route／Layout Route 官方定義）](https://reactrouter.com/6.30.3/start/concepts)
+  - [React Router — Routing（物件式路由、layout 函式）](https://reactrouter.com/start/framework/routing)
