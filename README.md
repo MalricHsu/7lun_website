@@ -38,10 +38,10 @@
 | ---------- | ------ |
 | HTML / CSS | 18     |
 | JavaScript | 18     |
-| React      | 5      |
-| Vue        | 5      |
+| React      | 7      |
+| Vue        | 7      |
 | Nuxt       | 1      |
-| Node.js    | 4      |
+| Node.js    | 6      |
 | Git        | 規劃中 |
 
 > 文章 frontmatter 加上 `date: YYYY-MM-DD` 即會被「最新筆記」外掛收錄，顯示在首頁目錄區。
