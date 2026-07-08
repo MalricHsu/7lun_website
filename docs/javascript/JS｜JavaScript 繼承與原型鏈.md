@@ -3,7 +3,7 @@ title: JS｜JavaScript 繼承與原型鏈
 sidebar_position: 13
 tags: [JavaScript, 知識點筆記]
 date: 2025-04-25
-slug: /docs/javascript/js-inheritance-prototype-chain
+slug: javascript/js-inheritance-prototype-chain
 ---
 
 ### 前言、繼承與原型鏈

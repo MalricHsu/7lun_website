@@ -3,7 +3,7 @@ title: Vue｜ Vue Router 觀念
 sidebar_position: 6
 tags: [Vue, JavaScript, 知識點筆記]
 date: 2026-05-07
-slug: /docs/vue/vue-router-concepts
+slug: vue/vue-router-concepts
 ---
 
 ### 一、Router 架構

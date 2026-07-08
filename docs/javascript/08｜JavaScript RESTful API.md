@@ -3,7 +3,7 @@ title: 08｜ JavaScript RESTful API
 sidebar_position: 9
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-10-31
-slug: /docs/javascript/js-restful-api
+slug: javascript/js-restful-api
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/API-5ed897eb14b743ba84502a85b5451e27)

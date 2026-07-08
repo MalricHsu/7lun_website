@@ -3,7 +3,7 @@ title: 03｜JavaScript 陣列與物件資料處理
 sidebar_position: 4
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-10-01
-slug: /docs/javascript/js-arrays-and-objects
+slug: javascript/js-arrays-and-objects
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/1fa913ef20fb4689bbcf12f48fea2b97)

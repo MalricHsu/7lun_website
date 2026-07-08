@@ -3,7 +3,7 @@ title: Vue｜ Vue 元件概念
 sidebar_position: 5
 tags: [Vue, JavaScript, 知識點筆記]
 date: 2026-05-04
-slug: /docs/vue/vue-component-concepts
+slug: vue/vue-component-concepts
 ---
 
 

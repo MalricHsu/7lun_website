@@ -3,7 +3,7 @@ title: React｜React Router
 sidebar_position: 6
 tags: [React, 知識點筆記]
 date: 2025-12-26
-slug: /docs/react/react-router
+slug: react/react-router
 ---
 
 ### 一、核心觀念

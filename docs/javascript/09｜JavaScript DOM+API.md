@@ -3,7 +3,7 @@ title: 09｜ JavaScript DOM + API 整合實作
 sidebar_position: 10
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-11-07
-slug: /docs/javascript/js-dom-api-integration
+slug: javascript/js-dom-api-integration
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/DOM-API-3ff8b47047e94275a99a5adfa9c1c95e)

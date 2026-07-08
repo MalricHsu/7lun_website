@@ -3,7 +3,7 @@ title: CSS｜格線系統
 sidebar_position: 8
 tags: [CSS, HTML, 知識點筆記]
 date: 2025-06-17
-slug: /docs/html-css/css-grid-system
+slug: html-css/css-grid-system
 ---
 
 ### 一、格線系統原理

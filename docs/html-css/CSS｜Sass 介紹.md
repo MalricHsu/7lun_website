@@ -3,7 +3,7 @@ title: CSS｜Sass 介紹
 sidebar_position: 6
 tags: [CSS, 知識點筆記]
 date: 2025-06-13
-slug: /docs/html-css/css-sass
+slug: html-css/css-sass
 ---
 
 ### 一、Sass 定義

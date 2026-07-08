@@ -3,7 +3,7 @@ title: React｜React Hook - useEffect
 sidebar_position: 3
 tags: [React, 知識點筆記]
 date: 2025-12-15
-slug: /docs/react/react-hook-useeffect
+slug: react/react-hook-useeffect
 ---
 
 ### 一、useEffect 大綱

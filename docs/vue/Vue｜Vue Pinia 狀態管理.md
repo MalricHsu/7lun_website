@@ -3,7 +3,7 @@ title: Vue｜Vue Pinia 狀態管理
 sidebar_position: 7
 tags: [Vue, Pinia, JavaScript, 知識點筆記]
 date: 2026-07-08
-slug: /docs/vue/pinia-concepts
+slug: vue/pinia-concepts
 ---
 
 
