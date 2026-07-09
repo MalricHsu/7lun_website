@@ -443,23 +443,36 @@ router.post("/register", async (req, res) => {
   return res.status(201).json({ status: "success", message: "註冊成功" });
 });
 
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  const user = users.find((user) => user.email === email);
-  if (!user)
-    return res.status(401).json({ status: "false", message: "帳號或密碼錯誤" });
-
-  const comparePassword = await bcrypt.compare(password, user.password);
-  if (!comparePassword)
-    return res.status(401).json({ status: "false", message: "帳號或密碼錯誤" });
-
-  // 確認有找到 email、密碼有打對，才給他 token
-  const token = jwt.sign(
-    { id: user.id, email: user.email },
-    process.env.JWT_SECRET,
-    { expiresIn: "30d" },
-  );
-  return res.status(200).json({ status: "success", token });
+router.post("/login", async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({
+        status: "false",
+        message: "請填寫 email 和 password",
+      });
+    }
+    const user = users.find((item) => item.email === email);
+    if (!user) {
+      return res
+        .status(400)
+        .json({ status: "false", message: "找不到使用者email" });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ status: "false", message: "密碼輸入錯誤" });
+    }
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "30d" },
+    );
+    return res
+      .status(201)
+      .json({ status: "success", message: "登入成功", token: token });
+  } catch (error) {
+    next(error);
+  }
 });
 ```
 
