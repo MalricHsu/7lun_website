@@ -3,7 +3,7 @@ title: React｜React Hook - useState
 sidebar_position: 2
 tags: [React, 知識點筆記]
 date: 2025-12-10
-slug: react/react-hook-usestate
+slug: react-hook-usestate
 ---
 
 ### 一、語法結構拆解：變數 vs.方法

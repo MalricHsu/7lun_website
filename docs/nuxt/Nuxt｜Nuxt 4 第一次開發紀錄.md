@@ -3,7 +3,7 @@ title: Nuxt｜Nuxt 4 第一次開發紀錄
 sidebar_position: 1
 tags: [Nuxt,Vue, JavaScript, 開發知識點]
 date: 2026-06-25
-slug: nuxt/nuxt4-first-dev-log
+slug: nuxt4-first-dev-log
 ---
 
 

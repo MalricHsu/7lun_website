@@ -3,7 +3,7 @@ title: React｜React 介紹
 sidebar_position: 1
 tags: [React]
 date: 2025-12-01
-slug: react/react-introduction
+slug: react-introduction
 ---
 
 ### 一、React 是什麼？

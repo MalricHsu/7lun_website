@@ -3,7 +3,7 @@ title: NodeJS｜ 模組化與 SRP 核心概念
 sidebar_position: 3
 tags: [NodeJs, JavaScript, 知識點筆記]
 date: 2026-06-22
-slug: nodejs/nodejs-modules-and-srp
+slug: nodejs-modules-and-srp
 ---
 
 ### 一、為什麼需要模組化？

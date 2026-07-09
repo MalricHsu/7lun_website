@@ -3,7 +3,7 @@ title: JS｜JavaScript Promise
 sidebar_position: 18
 tags: [JavaScript, 知識點筆記]
 date: 2026-06-22
-slug: javascript/js-promise
+slug: js-promise
 ---
 
 ### 一、非同步的定義

@@ -3,7 +3,7 @@ title: 01｜ JavaScript 變數與基礎型別
 sidebar_position: 1
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-09-24
-slug: javascript/js-variables-and-types
+slug: js-variables-and-types
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/JavaScript-0ee8318f421f4ca0b855f26d5602cd77)

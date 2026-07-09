@@ -3,7 +3,7 @@ title: CSS｜網站LOGO搜尋引擎優化
 sidebar_position: 4
 tags: [CSS, 知識點筆記]
 date: 2025-06-12
-slug: html-css/css-logo-seo
+slug: css-logo-seo
 ---
 
 ### 一、統整

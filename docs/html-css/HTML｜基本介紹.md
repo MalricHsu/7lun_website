@@ -3,7 +3,7 @@ title: HTML｜基本介紹
 sidebar_position: 1
 tags: [HTML, 知識點筆記]
 date: 2025-06-08
-slug: html-css/html-introduction
+slug: html-introduction
 ---
 
 ### 一、HTML 基本介紹

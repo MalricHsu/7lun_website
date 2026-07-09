@@ -3,7 +3,7 @@ title: 10｜ JavaScript SSR、CSR 渲染機制
 sidebar_position: 11
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-11-19
-slug: javascript/js-ssr-csr-rendering
+slug: js-ssr-csr-rendering
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/SSR-CSR-2a76a2468518806194f1e0c55cd323f3)

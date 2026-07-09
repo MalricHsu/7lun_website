@@ -3,7 +3,7 @@ title: JS｜JavaScript Array 陣列方法
 sidebar_position: 12
 tags: [JavaScript, 知識點筆記]
 date: 2025-04-25
-slug: javascript/js-array-methods
+slug: js-array-methods
 ---
 
 ### 一、改變原始陣列

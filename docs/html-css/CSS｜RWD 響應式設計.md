@@ -3,7 +3,7 @@ title: CSS｜RWD 響應式設計
 sidebar_position: 5
 tags: [CSS, HTML, 知識點筆記]
 date: 2025-06-12
-slug: html-css/css-rwd
+slug: css-rwd
 ---
 
 ### 一、Mobile-first vs Desktop-first

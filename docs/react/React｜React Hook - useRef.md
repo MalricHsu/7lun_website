@@ -3,7 +3,7 @@ title: React｜React Hook - useRef
 sidebar_position: 4
 tags: [React, 知識點筆記]
 date: 2025-12-20
-slug: react/react-hook-useref
+slug: react-hook-useref
 ---
 
 ### 一、useRef 大綱

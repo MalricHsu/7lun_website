@@ -3,7 +3,7 @@ title: Vue｜Vue Composition vs Options API 比較
 sidebar_position: 3
 tags: [Vue , JavaScript , 知識點筆記]
 date: 2026-04-26
-slug: vue/vue-composition-vs-options-api
+slug: vue-composition-vs-options-api
 ---
 
 ### 一、了解 Options API

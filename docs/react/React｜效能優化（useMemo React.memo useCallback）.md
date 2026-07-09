@@ -3,7 +3,7 @@ title: React｜效能優化（useMemo React.memo useCallback）
 sidebar_position: 5
 tags: [React, 知識點筆記]
 date: 2025-12-22
-slug: react/react-performance-optimization
+slug: react-performance-optimization
 ---
 
 ### 一、三者總結比較

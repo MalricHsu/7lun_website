@@ -3,7 +3,7 @@ title: 06｜ JavaScript AJAX非同步請求
 sidebar_position: 7
 tags: [JavaScript, 課程筆記, 知識點筆記]
 date: 2025-10-17
-slug: javascript/js-ajax-async-requests
+slug: js-ajax-async-requests
 ---
 
 - [課程講義](https://liberating-turtle-5a2.notion.site/AJAX-5ccd9e611e4c4d0daaa586d7d5bdcb61)

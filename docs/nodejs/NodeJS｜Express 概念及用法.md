@@ -3,7 +3,7 @@ title: NodeJS｜ Express 概念及用法
 sidebar_position: 5
 tags: [NodeJs, JavaScript, 知識點筆記]
 date: 2026-07-03
-slug: nodejs/nodejs-express-concepts
+slug: nodejs-express-concepts
 ---
 
 

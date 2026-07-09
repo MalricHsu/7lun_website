@@ -3,7 +3,7 @@ title: CSS｜複合選擇器
 sidebar_position: 7
 tags: [CSS, 知識點筆記]
 date: 2025-06-14
-slug: html-css/css-compound-selectors
+slug: css-compound-selectors
 ---
 
 ### 一、類別選擇器 vs 複合選擇器

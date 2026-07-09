@@ -3,7 +3,7 @@ title: React｜React Hook Form
 sidebar_position: 7
 tags: [React, 知識點筆記]
 date: 2025-12-30
-slug: react/react-hook-form
+slug: react-hook-form
 ---
 
 ### 一、React Hook Form 解決那些問題

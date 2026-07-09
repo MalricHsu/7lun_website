@@ -3,7 +3,7 @@ title: JS｜JavaScript 陳述式vs 表達式
 sidebar_position: 16
 tags: [JavaScript, 知識點筆記]
 date: 2025-12-25
-slug: javascript/js-statements-vs-expressions
+slug: js-statements-vs-expressions
 ---
 
 ### 一、陳述式 vs  表達式 比較

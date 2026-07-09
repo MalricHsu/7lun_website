@@ -3,7 +3,7 @@ title: Vue｜Vue Composition API，方法、監聽與 AJAX
 sidebar_position: 4
 tags: [Vue ,JavaScript ,"知識點筆記"]
 date: 2026-05-02
-slug: vue/vue-composition-api
+slug: vue-composition-api
 ---
 
 ### 一、Vue3 Composition API 應用架構

@@ -3,7 +3,7 @@ title: 02｜Flex 網頁排版術
 sidebar_position: 10
 tags: [CSS, HTML, 課程筆記]
 date: 2025-07-04
-slug: html-css/flexbox-layout
+slug: flexbox-layout
 ---
 
 - [課程講義](https://hackmd.io/yVyF8dSvSr6L7P_ya0GQxw)
