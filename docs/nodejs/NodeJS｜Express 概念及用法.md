@@ -442,7 +442,7 @@ node-js-week3-2026/
 
   // 複製一份初始資料，不直接改動被 require 進來的外部陣列
   const members = [...initialMembers];
-  let nextId = 5; // 初始有 4 筆(id 1~4)，下一個新增從 5 開始
+  let nextId = initialMembers.length + 1; // 使用抓取json長度+1
 
   // helper：依 query.level 篩選；沒帶 level 就回全部
   const filterByQuery = (list, query) => {
@@ -603,9 +603,10 @@ const app = express();
 // 順序很重要：middleware 一定要在 router 之前
 app.use(cors());                 // 1. 解跨域
 app.use(express.json());          // 2. 解析 JSON body（否則 req.body 是 undefined）
-app.use("/members", membersRouter);        // 3. 掛會員路由
-app.use("/uploadImage", uploadImageRouter); // 4. 掛上傳路由
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc)); // 5. Swagger 文件頁
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc)); // 3. Swagger 文件頁
+app.use("/members", membersRouter);        // 4. 掛會員路由
+app.use("/uploadImage", uploadImageRouter); // 5. 掛上傳路由
+
 
 // 注意：這裡不呼叫 app.listen()，交給 server.js
 module.exports = app;

@@ -414,33 +414,26 @@ module.exports = verifyToken;
 
 ```javascript
 // routes/auth.js（節錄）
-const users = [...initialUsers]; // 複製 fixtures，不動到原始陣列
-let nextId = initialUsers.length + 1;
-
-// 把「產生 salt + hash」包成一個小函式方便重複使用
-const handler = async (password) => {
-  const salt = await bcrypt.genSalt(10);
-  return await bcrypt.hash(password, salt);
-};
-
-router.post("/register", async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password)
-    return res
-      .status(400)
-      .json({ status: "false", message: "email 或 password 沒有填寫" });
-
-  const existEmail = users.some((user) => user.email === email);
-  if (existEmail)
-    return res
-      .status(400)
-      .json({ status: "false", message: "email已經有人使用過" });
-
-  const hashPassword = await handler(password);
-  const newUser = { id: nextId, email: email, password: hashPassword };
-  users.push(newUser);
-  nextId++;
-  return res.status(201).json({ status: "success", message: "註冊成功" });
+router.post("/register", async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password)
+      return res
+        .status(400)
+        .json({ status: "false", message: "email 或 password 沒有填寫" });
+    const existEmail = users.some((user) => user.email === email);
+    if (existEmail)
+      return res
+        .status(400)
+        .json({ status: "false", message: "email已經有人使用過" });
+    const hashPassword = await handler(password);
+    const newUser = { id: nextId, email: email, password: hashPassword };
+    users.push(newUser);
+    nextId++;
+    return res.status(201).json({ status: "success", message: "註冊成功" });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.post("/login", async (req, res, next) => {

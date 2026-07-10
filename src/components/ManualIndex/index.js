@@ -11,6 +11,7 @@ const CATEGORIES = [
   { folder: "vue", slug: "vuejs", title: "Vue" },
   { folder: "nuxt", slug: "nuxt", title: "Nuxt" },
   { folder: "nodejs", slug: "nodejs", title: "Node.js" },
+  { folder: "sql", slug: "sql", title: "SQL" },
   { folder: "git", slug: "git", title: "Git" },
 ];
 
