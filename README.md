@@ -43,7 +43,7 @@
 | Nuxt       | 1      |
 | Node.js    | 7      |
 | SQL        | 2      |
-| Git        | 規劃中 |
+| Git        | 3      |
 
 > 文章 frontmatter 加上 `date: YYYY-MM-DD` 即會被「最新筆記」外掛收錄，顯示在首頁目錄區。
 

@@ -1,5 +1,5 @@
 ---
-title: NodeJS｜Bcrypt、JWT 與 Middleware 身份驗證機制
+title: NodeJS｜ Bcrypt、JWT 與 Middleware 身份驗證機制
 sidebar_position: 6
 tags: [NodeJs, JavaScript, 知識點筆記]
 date: 2026-07-06
