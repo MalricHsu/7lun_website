@@ -49,10 +49,15 @@ const config = {
           blogTitle: "部落格 Blog",
           showReadingTime: true,
           onInlineTags: "warn",
-          blogSidebarTitle: "最近文章",
+          blogSidebarTitle: "全部文章",
+          blogSidebarCount: "ALL",
         },
         theme: {
           customCss: "./src/css/custom.css",
+        },
+        gtag: {
+          trackingID: "G-P7RJ6M9VTN",
+          anonymizeIP: true,
         },
       }),
     ],

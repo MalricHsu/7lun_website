@@ -143,7 +143,19 @@ export default function PortfolioPage() {
   ];
 
   // 後端小工具（之後新增：依上方格式填入物件即可）
-  const backendTools = [];
+  const backendTools = [{
+    title: "Roomly 即時聊天室",
+      category: "聊天室",
+      desc: "Vue 3 + Firebase 打造的即時登入聊天室，支援 Email 註冊登入、忘記密碼、輸入代碼建立或加入多房間、訊息即時同步更新。",
+      link: "/blog/vue-firebase-chatroom",
+      img: require("@site/static/img/roomly.png").default,
+      tags: [
+        'Vue 3', 'Composition API', 'Vite', 'Vue Router', 'Firebase Authentication', 'Cloud Firestore'
+      ],
+      github: "https://github.com/MalricHsu/roomly",
+      demo: "https://roomly-azure.vercel.app/",
+    }
+  ];
 
   return (
     <Layout

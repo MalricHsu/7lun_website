@@ -1,6 +1,6 @@
 ---
 slug: hexSchool-URBNSTEP
-title: URBNSTEP 從手刻切版到使用 Vue 3 框架
+title: URBNSTEP 從手刻切版到 Vue 3 專案開發
 authors: [7lun]
 tags: [project, Vue , 六角學院]
 date: 2026-07-02
