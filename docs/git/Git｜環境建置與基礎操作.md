@@ -36,53 +36,86 @@ slug: basics
 
 ### 二、安裝 Git
 
-#### 1. Windows
+#### Step 1：確認是否已安裝 Git
 
-- 官方目前推薦的安裝方式是用 **winget**（Windows 內建的套件管理工具，Win10 1809+ / Win11 都有），一行指令搞定，會自動安裝最新版並加入 PATH：
+- 先開啟終端機：
+
+    - **Windows**：Git Bash、PowerShell 或命令提示字元（CMD）
+    - **Mac**：Terminal
+
+- 輸入：
 
     ```bash
-    # 方式一（推薦）：winget 安裝
+    git --version
+    ```
+
+- 如果看到類似以下結果，就代表已安裝完成，可以直接跳到下一章。
+
+    ```bash
+    git version 2.x.x
+    ```
+
+- 如果出現找不到 `git` 的訊息，再依照下面步驟安裝。
+
+
+#### Step 2：安裝 Git
+
+##### Windows
+
+- 推薦使用 **winget**（Windows 內建套件管理工具），一行指令即可安裝最新版 Git。
+
+    ```bash
     winget install --id Git.Git -e --source winget
     ```
 
-- 不想用指令的話，傳統方式依然有效：
+- 如果不想使用指令，也可以到 Git 官方網站下載安裝程式。
+
+>  下載完成後一路按 **Next**，使用預設設定即可。
+
+- 安裝完成後，系統會一併安裝 **Git Bash**，建議之後都使用 Git Bash 執行 Git 指令，與 Mac、Linux 的操作方式一致。
+
+
+##### Mac
+
+- 如果剛剛執行 `git --version` 時沒有安裝 Git，可以選擇以下任一方式。
+
+- **方式一：安裝 Xcode Command Line Tools（推薦）**
 
     ```bash
-    # 方式二：到 git-scm.com 下載安裝檔，一路 Next，預設選項就夠用
-    # （下載頁會自動偵測系統架構，x64 / ARM64 都有原生版本）
-    ```
-
-- 兩種方式裝完都會多一個 **Git Bash**，這是 Windows 上模擬 Unix 指令環境的終端機，**建議用它來下 Git 指令（跟 Mac / Linux 的指令習慣一致）**。
-- 驗證安裝：
-
-    ```bash
-    git --version
-    # git version 2.x.x → 有跳出版本號就代表安裝成功
-    ```
-
-#### 2. Mac
-
-- Mac 通常內建 Git，先驗證看看：
-
-    ```bash
-    git --version
-    ```
-
-- 如果沒有，兩種方式擇一：
-
-    ```bash
-    # 方式一：安裝 Xcode Command Line Tools（跳出視窗照著裝即可）
     xcode-select --install
+    ```
 
-    # 方式二：用 Homebrew 安裝
+- 系統會跳出安裝視窗，依照提示完成即可。
+
+- **方式二：使用 Homebrew 安裝**
+
+    ```bash
     brew install git
     ```
 
+#### Step 3：確認安裝成功
+
+- 安裝完成後，再次輸入：
+
+    ```bash
+    git --version
+    ```
+
+- 如果看到版本號，例如：
+
+    ```bash
+    git version 2.52.0
+    ```
+
+- 就代表 Git 已成功安裝。
+
 :::tip
-Windows 用 **Git Bash**、Mac 用內建的**終端機（Terminal）**，之後所有指令兩邊都通用。
+
+**Windows：使用 Git Bash**
+**Mac：使用 Terminal**
+
+之後所有 Git 指令都可以直接照著操作，兩個平台幾乎沒有差異。
 :::
-
-
 
 ### 三、終端機基本操作
 
